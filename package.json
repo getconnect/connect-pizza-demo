@@ -1,0 +1,20 @@
+{
+  "name": "conenct-pizza-demo",
+  "version": "1.0.0",
+  "description": "Amazing Pizza Ordering to show off Connect",
+  "author": "Connect",
+  "license": "MIT",
+  "dependencies": {
+    "colors.css": "^2.3.0",
+    "react": "^0.13.3",
+    "rebass": "^0.1.3"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browser-sync": "^2.7.13",
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
+    "gulp-cssnext": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
