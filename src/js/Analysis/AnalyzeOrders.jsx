@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Badge } from 'rebass';
 
-class Analyze extends React.Component {
+class AnalyzeOrders extends React.Component {
 	render() {
 		return (
 			<div>
@@ -11,4 +11,4 @@ class Analyze extends React.Component {
 	}
 }
 
-export default Analyze;
+export default AnalyzeOrders;

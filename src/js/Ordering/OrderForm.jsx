@@ -2,31 +2,9 @@ import React from 'react';
 import { Container, Row, Col } from 'rebass';
 import { OrderOptions } from './Defaults.js';
 import OptionPicker from './OptionPicker.jsx';
+import TotalsSection from './TotalsSection.jsx';
 
-class SectionHeader extends React.Component {
-	render() {
-		return (
-			<Row>
-				<Col sm={12}>
-					<h2 className="h2 center">{this.props.title}</h2>
-	  			</Col>
-  			</Row>
-		);
-	}
-}
-
-class Section extends React.Component {
-	render() {
-		return (
-			<div className="mt2 mb4">
-  				<SectionHeader {...this.props}/>
-				<OptionPicker {...this.props}/>
-			</div>
-		);
-	}
-}
-
-class Order extends React.Component {
+class OrderForm extends React.Component {
 
 	constructor(props) {
     	super(props);
@@ -45,6 +23,7 @@ class Order extends React.Component {
     	this.onBaseSelected = this.onItemSelected.bind(this, 'base');
     	this.onSauceSelected = this.onItemSelected.bind(this, 'sauce');
     	this.onDeliverySelected = this.onItemSelected.bind(this, 'delivery');
+    	this.placeOrder = this.placeOrder.bind(this);
   	}
 
 	render() {
@@ -53,11 +32,12 @@ class Order extends React.Component {
 
 		return (
 			<Container>
-				<Section {...options.pizzaType} selected={selected.pizzaType} onItemSelected={this.onPizzaSelected} />
-				<Section {...options.size} selected={selected.size} onItemSelected={this.onSizeSelected} />
-				<Section {...options.base} selected={selected.base} onItemSelected={this.onBaseSelected} />
-				<Section {...options.sauce} selected={selected.sauce} onItemSelected={this.onSauceSelected} />
-				<Section {...options.delivery} selected={selected.delivery} onItemSelected={this.onDeliverySelected} />
+				<OptionPicker {...options.pizzaType} selected={selected.pizzaType} onItemSelected={this.onPizzaSelected} />
+				<OptionPicker {...options.size} selected={selected.size} onItemSelected={this.onSizeSelected} />
+				<OptionPicker {...options.base} selected={selected.base} onItemSelected={this.onBaseSelected} />
+				<OptionPicker {...options.sauce} selected={selected.sauce} onItemSelected={this.onSauceSelected} />
+				<OptionPicker {...options.delivery} selected={selected.delivery} onItemSelected={this.onDeliverySelected} />
+				<TotalsSection options={options} selected={selected} placeOrder={this.placeOrder} />
 			</Container>
 		);
 	}
@@ -67,7 +47,13 @@ class Order extends React.Component {
 		state.selected[sectionName] = selectedIndex;
 		this.setState(state);
 	}
-}
-Order.defaultProps = { options: OrderOptions }
 
-export default Order;
+
+	placeOrder() {
+
+	}
+
+}
+OrderForm.defaultProps = { options: OrderOptions }
+
+export default OrderForm;

@@ -1,6 +1,6 @@
 import React from 'react';
-import Order from './Ordering/Order.jsx';
-import Analyze from './Analysis/Analyze.jsx';
+import OrderForm from './Ordering/OrderForm.jsx';
+import AnalyzeOrders from './Analysis/AnalyzeOrders.jsx';
 
 class App extends React.Component {
 
@@ -14,7 +14,7 @@ class App extends React.Component {
 
 	render() {
 		var showAnalyzingPage = this.state.isAnalyzing;
-		return showAnalyzingPage ? <Analyze togglePage={this.togglePage} /> : <Order togglePage={this.togglePage} />;
+		return showAnalyzingPage ? <AnalyzeOrders togglePage={this.togglePage} /> : <OrderForm togglePage={this.togglePage} />;
 	}
 
 	togglePage() {

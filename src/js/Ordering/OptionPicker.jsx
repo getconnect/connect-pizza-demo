@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import { Row, Col } from 'rebass';
 
-class OptionCellInner extends React.Component {
+class OptionPickerCellInner extends React.Component {
 	render() {
-		var { title, price, imageUrl, isExtra, isSelected } = this.props;
+		var { title, price, imageUrl, isExtra } = this.props;
 
 		var prefix = isExtra ? '+$': '$';
 		var formattedPrice = price == 0 ? 'No Charge' : prefix + price;
@@ -19,7 +19,7 @@ class OptionCellInner extends React.Component {
 	}
 }
 
-class OptionCell extends React.Component {
+class OptionPickerCell extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -35,7 +35,7 @@ class OptionCell extends React.Component {
 		var isFaded = !isSelected && !this.state.isHovering;
 
   		var cellClasses = classNames(
-  			'option-cell', 'rounded', 'm1', 'pointer', 'relative', 'flex', 'flex-column', 'flex-center', 'flex-justify-center',
+  			'option-cell-height', 'rounded', 'm1', 'pointer', 'relative', 'flex', 'flex-column', 'flex-center', 'flex-justify-center',
   			{ 'faded': isFaded }, 
   			{ 'border': isSelected }, 
   			{ 'transparent-border': !isSelected }
@@ -49,7 +49,7 @@ class OptionCell extends React.Component {
 											 onMouseLeave={this.hoverEnded} 
 											      onClick={this.handleSelection}>
 					{selectedTick}
-					<OptionCellInner {...this.props}/>
+					<OptionPickerCellInner {...this.props}/>
 				</div>
 			</Col>
 		);
@@ -71,16 +71,22 @@ class OptionCell extends React.Component {
 class OptionPicker extends React.Component {
 	render() {
 		var { options, selected } = this.props;
+
+		var optionCells = options.map((option, index) => {
+			return <OptionPickerCell {...option} key={index} 
+										 	   index={index}
+									   		 isExtra={this.props.isExtra}
+									  onItemSelected={this.props.onItemSelected}
+										  isSelected={index === selected} />;
+		});
+
 		return (
-			<Row>{
-				options.map((option, index) => {
-					return <OptionCell {...option} key={index} 
-												 index={index}
-											   isExtra={this.props.isExtra}
-									 	onItemSelected={this.props.onItemSelected}
-							 				isSelected={index === selected} />;
-				})
-			}</Row>
+			<Row>
+				<div className="mt2 mb4">
+	  				<h2 className="h2 center">{this.props.title}</h2>
+	  				{optionCells}
+				</div>	
+			</Row>
 		);
 	}
 }
