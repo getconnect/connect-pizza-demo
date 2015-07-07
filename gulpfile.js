@@ -35,12 +35,17 @@ gulp.task('js', function () {
 	.pipe(gulp.dest('./dist'));
 });
 
+gulp.task('images', function () {
+    return gulp.src('src/**/*.png')
+        .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('html', function() {
 	return gulp.src('src/index.html')
     	.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('dist', ['css', 'js', 'html']);
+gulp.task('dist', ['css', 'js', 'html', 'images']);
 
 
 gulp.task('reload-dist', ['dist'], browserSync.reload);

@@ -1,6 +1,6 @@
 import React from 'react';
-import Order from './Order.jsx';
-import Analyze from './Analyze.jsx';
+import Order from './Ordering/Order.jsx';
+import Analyze from './Analysis/Analyze.jsx';
 
 class App extends React.Component {
 

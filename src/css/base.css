@@ -2,12 +2,15 @@
 
 :root {
 
-	--container-width: 780px;
+	--container-width: 700px;
 
 	--font-family: 'Kameron', 'Avenir Next', sans-serif;
-	--border-width: 2px;
-  	--border-radius: 6px;
-  	--border-color: var(--darken-1);
+
+
+
+	--border-width: 1px;
+  	--border-radius: 8px;
+  	--border-color: gainsboro;
 
   	--min-cell-height: 170px;
 }
@@ -18,4 +21,19 @@
 
 .flex-justify-center {
 	justify-content: center;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.faded {
+	opacity: 0.5;
+}
+.faded:hover {
+	opacity: 1;
+}
+
+.transparent-border {
+	border: var(--border-width) solid transparent;
 }
