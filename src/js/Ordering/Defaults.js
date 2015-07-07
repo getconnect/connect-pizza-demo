@@ -39,10 +39,6 @@ var OrderOptions = {
 			{ title: 'Spicy Habanero', price: 0, imageUrl: null }
 		]
 	},
-	qty: {
-		title: 'Quantity',
-		defaultValue: 1 
-	},
 	delivery: {
 		title: 'Pickup or delivery?',
 		isExtra: true,
@@ -50,9 +46,6 @@ var OrderOptions = {
 			{ title: 'Pickup', price: 0, imageUrl: 'images/pickup.png' },
 			{ title: 'Delivery', price: 1, imageUrl: 'images/delivery.png' }
 		]
-	},
-	address: {
-		title: 'Your address'
 	}
 };
 
