@@ -1,1 +1,21 @@
 @import 'rebass';
+
+:root {
+
+	--container-width: 780px;
+
+	--font-family: 'Kameron', 'Avenir Next', sans-serif;
+	--border-width: 2px;
+  	--border-radius: 6px;
+  	--border-color: var(--darken-1);
+
+  	--min-cell-height: 170px;
+}
+
+.option-cell {
+	min-height: var(--min-cell-height);
+}
+
+.flex-justify-center {
+	justify-content: center;
+}

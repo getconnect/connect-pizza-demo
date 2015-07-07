@@ -1,4 +1,4 @@
-import App from './js/app.jsx';
+import App from './js/App.jsx';
 import React from 'react';
 
 function onRenderError(error) {
