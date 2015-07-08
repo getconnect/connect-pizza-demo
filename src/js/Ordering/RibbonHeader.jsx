@@ -14,7 +14,7 @@ class RibbonHeader extends React.Component {
 	}
 }
 RibbonHeader.propTypes = {
-  title: React.PropTypes.string
+  title: React.PropTypes.string.isRequired
 }
 
 export default RibbonHeader;

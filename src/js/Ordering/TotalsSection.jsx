@@ -5,15 +5,22 @@ import RibbonHeader from './RibbonHeader.jsx';
 
 class TotalsSection extends React.Component {
 	render() {
-		var { options, selected } = this.props;
+		var { deliveryOptions, 
+			  selectedDeliveryOption, 
+			  pizzaOptions, 
+			  selectedPizzaOptions, 
+			  quantity
+			} = this.props;
 
-		var keys = Object.keys(options);
-
-		var total = keys.reduce((total, key) => {
-			var selectedIndex = selected[key];
-			var selectedOption = options[key].options[selectedIndex];
+		var total = Object.keys(pizzaOptions).reduce((total, option) => {
+			var selectedIndex = selectedPizzaOptions[option];
+			var selectedOption = pizzaOptions[option].options[selectedIndex];
 			return total + selectedOption.price;
 		}, 0);
+
+		total *= Math.max(quantity, 1);
+
+		total += deliveryOptions.options[selectedDeliveryOption].price;
 
 		var formattedTotal = Numeral(total).format('$0,0.00');
 
@@ -27,6 +34,13 @@ class TotalsSection extends React.Component {
 			</Container>
 		);
 	}
+}
+TotalsSection.propTypes = {
+	deliveryOptions: React.PropTypes.object.isRequired,
+	selectedDeliveryOption: React.PropTypes.number.isRequired,
+	pizzaOptions: React.PropTypes.object.isRequired,
+	selectedPizzaOptions: React.PropTypes.object.isRequired,
+	quantity: React.PropTypes.number.isRequired
 }
 
 export default TotalsSection;

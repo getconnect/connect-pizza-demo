@@ -1,6 +1,6 @@
 
-var OrderOptions = {
-	pizzaType: {
+var pizzaOptions = {
+	type: {
 		title: 'Choose a pizza',
 		isExtra: false,
 		options: [
@@ -38,15 +38,16 @@ var OrderOptions = {
 			{ title: 'Barbeque', price: 0, imageUrl: null },
 			{ title: 'Spicy Habanero', price: 0, imageUrl: null }
 		]
-	},
-	delivery: {
-		title: 'Pickup or delivery?',
-		isExtra: true,
-		options: [
-			{ title: 'Pickup', price: 0, imageUrl: 'images/pickup.png' },
-			{ title: 'Delivery', price: 1, imageUrl: 'images/delivery.png' }
-		]
 	}
 };
 
-export { OrderOptions }
+var deliveryOptions = {
+	title: 'Pickup or delivery?',
+	isExtra: true,
+	options: [
+		{ title: 'Pickup', price: 0, imageUrl: 'images/pickup.png' },
+		{ title: 'Delivery', price: 4, imageUrl: 'images/delivery.png' }
+	]
+}
+
+export { pizzaOptions, deliveryOptions }

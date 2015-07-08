@@ -1,6 +1,7 @@
 import React from 'react';
 import OrderForm from './Ordering/OrderForm.jsx';
 import AnalyzeOrders from './Analysis/AnalyzeOrders.jsx';
+import { polyfill } from 'babelify';
 
 class App extends React.Component {
 

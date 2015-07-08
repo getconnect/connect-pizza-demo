@@ -87,5 +87,10 @@ class OptionPicker extends React.Component {
 		);
 	}
 }
+OptionPicker.propTypes = {
+	title: React.PropTypes.string.isRequired,
+	isExtra: React.PropTypes.bool.isRequired,
+	options: React.PropTypes.array.isRequired
+}
 
 export default OptionPicker;
