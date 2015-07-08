@@ -6,11 +6,21 @@
 
 	--font-family: 'Kameron', 'Avenir Next', sans-serif;
 
+	--black: #333;
 
+  	--h1: 4.25rem;
+  	--h2: 1.5rem;
+  	--h3: 1.25rem;
+  	--h4: 1rem;
+  	--h5: .875rem;
+  	--h6: .75rem;
 
 	--border-width: 1px;
   	--border-radius: 8px;
   	--border-color: gainsboro;
+
+  	--button-padding-y: 1rem;
+  	--button-padding-x: 2rem;
 
   	--min-cell-height: 170px;
 }
@@ -29,9 +39,6 @@
 
 .faded {
 	opacity: 0.5;
-}
-.faded:hover {
-	opacity: 1;
 }
 
 .transparent-border {

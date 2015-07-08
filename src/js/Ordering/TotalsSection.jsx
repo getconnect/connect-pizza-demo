@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Row, Col } from 'rebass';
+import { Container, Button } from 'rebass';
+import Numeral from 'numeral';
+import RibbonHeader from './RibbonHeader.jsx';
 
 class TotalsSection extends React.Component {
 	render() {
@@ -13,10 +15,15 @@ class TotalsSection extends React.Component {
 			return total + selectedOption.price;
 		}, 0);
 
+		var formattedTotal = Numeral(total).format('$0,0.00');
+
 		return (
 			<Container>
-				<h2 className="h2 center">Order Total</h2>
-				<h1 className="center">{'$' + total}</h1>
+				<div className="center mb4">
+					<RibbonHeader title={"Order Total"}/>
+					<h1 className="center mt3 mb3">{formattedTotal}</h1>
+					<Button color="black">Place Order</Button>
+				</div>
 			</Container>
 		);
 	}

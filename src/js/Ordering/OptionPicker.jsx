@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Row, Col } from 'rebass';
+import RibbonHeader from './RibbonHeader.jsx';
 
 class OptionPickerCellInner extends React.Component {
 	render() {
@@ -24,10 +25,6 @@ class OptionPickerCell extends React.Component {
 		super(props);
 
 		this.state = { isHovering: false }
-
-		this.hoverBegan = this.hoverBegan.bind(this);
-		this.hoverEnded = this.hoverEnded.bind(this);
-		this.handleSelection = this.handleSelection.bind(this);
 	}
 
 	render() {
@@ -45,9 +42,9 @@ class OptionPickerCell extends React.Component {
 
 		return (
 			<Col sm={6} md={4}>
-				<div className={cellClasses} onMouseEnter={this.hoverBegan} 
-											 onMouseLeave={this.hoverEnded} 
-											      onClick={this.handleSelection}>
+				<div className={cellClasses} onMouseEnter={this.hoverBegan.bind(this)} 
+											 onMouseLeave={this.hoverEnded.bind(this)} 
+											      onClick={this.handleSelection.bind(this)}>
 					{selectedTick}
 					<OptionPickerCellInner {...this.props}/>
 				</div>
@@ -82,8 +79,8 @@ class OptionPicker extends React.Component {
 
 		return (
 			<Row>
-				<div className="mt2 mb4">
-	  				<h2 className="h2 center">{this.props.title}</h2>
+				<div className="mt3 mb4">
+					<RibbonHeader title={this.props.title}/>
 	  				{optionCells}
 				</div>	
 			</Row>

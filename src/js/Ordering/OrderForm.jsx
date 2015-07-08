@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'rebass';
 import { OrderOptions } from './Defaults.js';
+import HeaderLogo from './HeaderLogo.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import TotalsSection from './TotalsSection.jsx';
 
@@ -23,7 +24,6 @@ class OrderForm extends React.Component {
     	this.onBaseSelected = this.onItemSelected.bind(this, 'base');
     	this.onSauceSelected = this.onItemSelected.bind(this, 'sauce');
     	this.onDeliverySelected = this.onItemSelected.bind(this, 'delivery');
-    	this.placeOrder = this.placeOrder.bind(this);
   	}
 
 	render() {
@@ -32,12 +32,13 @@ class OrderForm extends React.Component {
 
 		return (
 			<Container>
+				<HeaderLogo/>
 				<OptionPicker {...options.pizzaType} selected={selected.pizzaType} onItemSelected={this.onPizzaSelected} />
 				<OptionPicker {...options.size} selected={selected.size} onItemSelected={this.onSizeSelected} />
 				<OptionPicker {...options.base} selected={selected.base} onItemSelected={this.onBaseSelected} />
 				<OptionPicker {...options.sauce} selected={selected.sauce} onItemSelected={this.onSauceSelected} />
 				<OptionPicker {...options.delivery} selected={selected.delivery} onItemSelected={this.onDeliverySelected} />
-				<TotalsSection options={options} selected={selected} placeOrder={this.placeOrder} />
+				<TotalsSection options={options} selected={selected} placeOrder={this.placeOrder.bind(this)} />
 			</Container>
 		);
 	}
@@ -47,7 +48,6 @@ class OrderForm extends React.Component {
 		state.selected[sectionName] = selectedIndex;
 		this.setState(state);
 	}
-
 
 	placeOrder() {
 
