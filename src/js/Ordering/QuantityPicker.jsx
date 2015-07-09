@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'rebass';
-import PageSection from './PageSection.jsx';
-import RibbonHeader from './RibbonHeader.jsx';
+import PageSection from '../Common/PageSection.jsx';
+import RibbonHeader from '../Common/RibbonHeader.jsx';
 
 class QuantityPicker extends React.Component {
 

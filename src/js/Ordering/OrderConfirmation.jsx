@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Button } from 'rebass';
-import HeaderLogo from './HeaderLogo.jsx';
-import RibbonHeader from './RibbonHeader.jsx';
+import HeaderLogo from '../Common/HeaderLogo.jsx';
+import RibbonHeader from '../Common/RibbonHeader.jsx';
 
 class OrderConfirmation extends React.Component {
 	render() {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Button } from 'rebass';
 import Numeral from 'numeral';
-import PageSection from './PageSection.jsx';
-import RibbonHeader from './RibbonHeader.jsx';
+import PageSection from '../Common/PageSection.jsx';
+import RibbonHeader from '../Common/RibbonHeader.jsx';
 
 class TotalsSection extends React.Component {
     render() {

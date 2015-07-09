@@ -35,7 +35,9 @@ class GooglePlacesAutocomplete extends React.Component {
         );
     }
 }
-
+GooglePlacesAutocomplete.propTypes = {
+    onAddressChanged: React.PropTypes.func
+}
 
 
 export default GooglePlacesAutocomplete;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'rebass';
 import Order from './Order.js';
-import HeaderLogo from './HeaderLogo.jsx';
+import HeaderLogo from '../Common/HeaderLogo.jsx';
 import OrderConfirmation from './OrderConfirmation.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';

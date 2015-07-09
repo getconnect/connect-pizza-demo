@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Row, Col } from 'rebass';
-import PageSection from './PageSection.jsx';
-import RibbonHeader from './RibbonHeader.jsx';
+import PageSection from '../Common/PageSection.jsx';
+import RibbonHeader from '../Common/RibbonHeader.jsx';
 
 class OptionPickerCellInner extends React.Component {
     render() {
