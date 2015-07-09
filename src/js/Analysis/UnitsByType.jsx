@@ -15,13 +15,11 @@ class UnitsByType extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
-            .select({                
-                totalSales: {
-                    sum: 'cost'
-                }
+        return connect.query('orders')
+            .select({
+                totalNumPizzas: 'count'
             })
-            .groupBy(['manufacturer']);
+            .groupBy(['pizza.type.value']);
     }
 }
 
@@ -30,13 +28,14 @@ UnitsByType.defaultProps = {
     chartOptions: {
         title: 'Most Popular Pizza',
         fields: {
-            totalUnits: {
-                label: 'Total',
+            totalNumPizzas: {
+                label: 'No. of Pizzas',
                 valueFormatter: formatters.units
             }
         },
         chart: {
-            type: 'bar'
+            type: 'bar',
+            colors: ['#3498db']
         }
     }
 }

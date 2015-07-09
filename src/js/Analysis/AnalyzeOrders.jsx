@@ -44,11 +44,6 @@ class AnalyzeOrders extends React.Component {
                         <UnitsByType></UnitsByType>
                     </Col>
                 </Row>
-                <Row>
-                    <Col sm={12}>
-                        <OrdersBySuburb></OrdersBySuburb>
-                    </Col>
-                </Row>
             </Container>
         );
     }

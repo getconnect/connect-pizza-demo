@@ -15,10 +15,10 @@ class DollarSales extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
+        return connect.query('orders')
                 .select({
                     totalSales: {
-                        sum: 'cost'
+                        sum: 'totalPrice'
                     }
                 });
     }

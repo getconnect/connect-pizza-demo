@@ -15,10 +15,10 @@ class SalesByTime extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
+        return connect.query('orders')
             .select({                
                 totalSales: {
-                    sum: 'cost'
+                    sum: 'totalPrice'
                 }
             })
             .interval(this.props.interval);
@@ -27,7 +27,7 @@ class SalesByTime extends React.Component {
 
 SalesByTime.defaultProps = {
     id: 'sales-over-time',
-    interval: 'monthly',
+    interval: 'daily',
     chartOptions: {
         title: 'Sales Over Time',
         fields: {
@@ -37,7 +37,10 @@ SalesByTime.defaultProps = {
             }
         },
         chart: {
-            type: 'area-spline'
+            type: 'area-spline',
+            yAxis: {
+                valueFormatter: formatters.dollars
+            }
         }
     }
 }

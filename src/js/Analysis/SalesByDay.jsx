@@ -15,13 +15,13 @@ class SalesByDay extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
-            .select({                
+        return connect.query('orders')
+            .select({            
                 totalSales: {
-                    sum: 'cost'
+                    sum: 'totalPrice'
                 }
             })
-            .groupBy(['manufacturer']);
+            .groupBy(['time.dayOfWeek']);
     }
 }
 
@@ -36,7 +36,11 @@ SalesByDay.defaultProps = {
             }
         },
         chart: {
-            type: 'bar'
+            type: 'bar',
+            colors: ['#9b59b6'],
+            yAxis: {
+                valueFormatter: formatters.dollars
+            }
         }
     }
 }
