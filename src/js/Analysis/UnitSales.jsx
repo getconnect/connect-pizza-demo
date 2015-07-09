@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from '../connect.js';
-import { Button, Badge } from 'rebass';
-import TextViz from './TextViz.jsx'
+import TextViz from './TextViz.jsx';
+import formatters from './formatters.js';
 
 class UnitSales extends React.Component {
     constructor(props) {
@@ -25,11 +25,14 @@ class UnitSales extends React.Component {
 }
 
 UnitSales.defaultProps = { 
-    title: 'Electric Car Sales 2018 (units)',
-    id: 'unit-sales', 
-    fieldName: 'totalSales',
-    formatter: (value) => {
-        return value;
+    id: 'unit-sales',
+    textOptions: {
+        title: 'Sales (Units)',
+        fields: {
+            totalSales: {
+                valueFormatter: formatters.units
+            }
+        }
     }
 }
 

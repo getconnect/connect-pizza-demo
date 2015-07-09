@@ -2,33 +2,33 @@ import React from 'react';
 import connect from '../connect.js';
 import { Button, Badge } from 'rebass';
 
-class ChartViz extends React.Component {
+class TableViz extends React.Component {
     constructor(props) {
         super(props);       
     }
 
     render() {
         var style = {
-            height: '250px'
+            height: '500px'
         };
 
         return (
-            <div id={this.props.id} ref="chartVizContainer" style={style}></div>
+            <div id={this.props.id} ref="tableVizContainer" style={style}></div>
         );
     }
 
     componentDidMount() {
         var query = this.props.query,
-            container = React.findDOMNode(this.refs.chartVizContainer),
-            chartOptions = this.props.chartOptions;
+            container = React.findDOMNode(this.refs.tableVizContainer),
+            tableOptions = this.props.tableOptions;
 
-        this.viz = connect.chart(query, container, chartOptions);
+        this.viz = connect.table(query, container, tableOptions);
     }
-
+    
 
     componentDidUpdate() {
         this.viz.update(this.props.query);
     }
 }
 
-export default ChartViz;
+export default TableViz;
