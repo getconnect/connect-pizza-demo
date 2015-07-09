@@ -31,7 +31,7 @@ class OrderForm extends React.Component {
             return <OrderConfirmation onOrderAgain={this.onOrderAgain.bind(this)} quantity={quantity} />
         }
 
-        var total = order.calculateTotal();
+        var totalPrice = order.getTotalPrice();
 
         return (
             <Container>
@@ -42,7 +42,7 @@ class OrderForm extends React.Component {
                 <OptionPicker {...pizzaOptions.sauce} selected={selectedPizzaOptions.sauce} onItemSelected={this.onSauceSelected} />
                 <QuantityPicker quantity={quantity} onQuantityUpdated={this.onQuantityUpdated.bind(this)} />
                 <OptionPicker {...deliveryOptions} selected={selectedDeliveryOption} onItemSelected={this.onDeliverySelected.bind(this)} />
-                <TotalsSection total={total} onPlaceOrder={this.onPlaceOrder.bind(this)} />
+                <TotalsSection total={totalPrice} onPlaceOrder={this.onPlaceOrder.bind(this)} />
             </Container>
         );
     }
