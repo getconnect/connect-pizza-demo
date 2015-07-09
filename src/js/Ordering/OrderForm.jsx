@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'rebass';
 import { pizzaOptions, deliveryOptions } from './Defaults.js';
 import HeaderLogo from './HeaderLogo.jsx';
+import OrderConfirmation from './OrderConfirmation.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';
 import TotalsSection from './TotalsSection.jsx';
@@ -10,17 +11,7 @@ class OrderForm extends React.Component {
 
 	constructor(props) {
     	super(props);
-    	this.state = { 
-    		selectedPizzaOptions: {
-    			type: 0,
-    			size: 0,
-    			base: 0,
-    			sauce: 0,
-    			delivery: 0
-    		},
-    		selectedDeliveryOption: 0,
-    		quantity: 1
-    	};
+    	this.state = this.initialState();
 
     	this.onPizzaSelected = this.onItemSelected.bind(this, 'type');
     	this.onSizeSelected = this.onItemSelected.bind(this, 'size');
@@ -30,7 +21,19 @@ class OrderForm extends React.Component {
 
 	render() {
 		var { pizzaOptions, deliveryOptions } = this.props;
-		var { selectedPizzaOptions, selectedDeliveryOption, quantity } = this.state;
+		var { selectedPizzaOptions, selectedDeliveryOption, quantity, orderPlaced } = this.state;
+
+		if (orderPlaced) {
+			return <OrderConfirmation onOrderAgain={this.onOrderAgain.bind(this)} quantity={quantity} />
+		}
+
+		var total = Object.keys(pizzaOptions).reduce((total, option) => {
+			var selectedIndex = selectedPizzaOptions[option];
+			var selectedOption = pizzaOptions[option].options[selectedIndex];
+			return total + selectedOption.price;
+		}, 0);
+		total *= Math.max(quantity, 1);
+		total += deliveryOptions.options[selectedDeliveryOption].price;
 
 		return (
 			<Container>
@@ -41,14 +44,24 @@ class OrderForm extends React.Component {
 				<OptionPicker {...pizzaOptions.sauce} selected={selectedPizzaOptions.sauce} onItemSelected={this.onSauceSelected} />
 				<QuantityPicker quantity={quantity} onQuantityUpdated={this.onQuantityUpdated.bind(this)} />
 				<OptionPicker {...deliveryOptions} selected={selectedDeliveryOption} onItemSelected={this.onDeliverySelected.bind(this)} />
-				<TotalsSection deliveryOptions={deliveryOptions} 
-						selectedDeliveryOption={selectedDeliveryOption}
-								  pizzaOptions={pizzaOptions} 
-						  selectedPizzaOptions={selectedPizzaOptions} 
-					   				  quantity={quantity} 
-									placeOrder={this.placeOrder.bind(this)} />
+				<TotalsSection total={total} onPlaceOrder={this.onPlaceOrder.bind(this)} />
 			</Container>
 		);
+	}
+
+	initialState() {
+		return { 
+    		selectedPizzaOptions: {
+    			type: 0,
+    			size: 0,
+    			base: 0,
+    			sauce: 0,
+    			delivery: 0
+    		},
+    		selectedDeliveryOption: 0,
+    		quantity: 1,
+    		orderPlaced: false
+    	};
 	}
 
 	onItemSelected(sectionName, selectedIndex) {
@@ -69,8 +82,14 @@ class OrderForm extends React.Component {
 		this.setState(state);
 	}
 
-	placeOrder() {
+	onPlaceOrder() {
+		var state = this.state;
+		state.orderPlaced = true;
+		this.setState(state);
+	}
 
+	onOrderAgain() {
+		this.setState(this.initialState());
 	}
 
 }

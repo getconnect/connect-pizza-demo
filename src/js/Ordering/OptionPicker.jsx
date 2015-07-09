@@ -80,9 +80,9 @@ class OptionPicker extends React.Component {
 		return (
 			<Row>
 				<div className="mt3 mb4">
-					<RibbonHeader title={this.props.title}/>
+					<RibbonHeader>{this.props.title}</RibbonHeader>
 	  				{optionCells}
-				</div>	
+				</div>
 			</Row>
 		);
 	}

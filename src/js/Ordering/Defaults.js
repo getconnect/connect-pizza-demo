@@ -5,7 +5,7 @@ var pizzaOptions = {
 		isExtra: false,
 		options: [
 			{ title: 'Supreme', price: 10, imageUrl: 'images/supreme.png'},
-			{ title: 'Cheese', price: 10, imageUrl: 'images/cheese.png'},
+			{ title: 'Cheese', price: 8, imageUrl: 'images/cheese.png'},
 			{ title: 'Hawaiian', price: 10, imageUrl: 'images/hawaiian.png' },
 			{ title: 'Pepperoni', price: 10, imageUrl: 'images/pepperoni.png' },
 			{ title: 'Mexicana', price: 10, imageUrl: 'images/mexicana.png' },
