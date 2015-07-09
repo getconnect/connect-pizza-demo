@@ -4,6 +4,7 @@ var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var browserSync = require('browser-sync').create();
 var cssNext = require('gulp-cssnext');
+var concat = require('gulp-concat');
 
 var errorsFatal = false;
 
@@ -15,10 +16,11 @@ function handleError(error) {
 }
 
 gulp.task('css', function() {
-  return gulp.src("./src/css/base.css")
+  return gulp.src(["./node_modules/connect-js-viz/node_modules/connect-js-c3/c3.css", "./node_modules/connect-js-viz/css/connect-viz.css", "./src/css/base.css"])
     .pipe(cssNext({
         compress: true
     }))
+    .pipe(concat('base.css'))
     .pipe(gulp.dest("./dist/css"))
     .on('error', handleError);
 });
@@ -32,7 +34,8 @@ gulp.task('js', function () {
 	.transform(babelify)
 	.bundle()
 	.pipe(source('index.js'))
-	.pipe(gulp.dest('./dist'));
+	.pipe(gulp.dest('./dist'))
+    .on('error', handleError);
 });
 
 gulp.task('images', function () {
