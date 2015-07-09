@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Row, Col } from 'rebass';
+import PageSection from './PageSection.jsx';
 import RibbonHeader from './RibbonHeader.jsx';
 
 class OptionPickerCellInner extends React.Component {
@@ -78,14 +79,12 @@ class OptionPicker extends React.Component {
         });
 
         return (
-            <Row>
-                <div className="mt3 mb4 center">
-                    <RibbonHeader>{this.props.title}</RibbonHeader>
-                    <div className="center block clearfix">
-                        {optionCells}
-                    </div>
-                </div>
-            </Row>
+            <PageSection>
+                <RibbonHeader>{this.props.title}</RibbonHeader>
+                <Row>
+                    {optionCells}
+                </Row>
+            </PageSection>
         );
     }
 }

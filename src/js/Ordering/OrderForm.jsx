@@ -5,6 +5,7 @@ import HeaderLogo from './HeaderLogo.jsx';
 import OrderConfirmation from './OrderConfirmation.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';
+import AddressPicker from './AddressPicker.jsx';
 import TotalsSection from './TotalsSection.jsx';
 
 class OrderForm extends React.Component {
@@ -42,6 +43,7 @@ class OrderForm extends React.Component {
                 <OptionPicker {...pizzaOptions.sauce} selected={selectedPizzaOptions.sauce} onItemSelected={this.onSauceSelected} />
                 <QuantityPicker quantity={quantity} onQuantityUpdated={this.onQuantityUpdated.bind(this)} />
                 <OptionPicker {...deliveryOptions} selected={selectedDeliveryOption} onItemSelected={this.onDeliverySelected.bind(this)} />
+                <AddressPicker />
                 <TotalsSection total={totalPrice} onPlaceOrder={this.onPlaceOrder.bind(this)} />
             </Container>
         );
