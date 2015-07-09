@@ -1,3 +1,9 @@
+import Connect from 'connect-js-viz';
+
+var connect = new Connect({
+	apiKey: "this.is-a;nice'key",
+	projectId: "project.id-is;not'bad"
+});
 
 class Order {
 
@@ -15,6 +21,12 @@ class Order {
     	this.selectedDeliveryOption = 0;
 
     	this.quantity = 1;
+	}
+
+	placeOrder() {
+		return connect.push({
+			yay: 'an event'
+		});
 	}
 
 	calculateTotal() {

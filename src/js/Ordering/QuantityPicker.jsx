@@ -12,7 +12,7 @@ class QuantityPicker extends React.Component {
 		return (
 			<Container>
 				<div className="center mt3 mb4">
-					<RibbonHeader title={"Quantity"} />
+					<RibbonHeader>Quantity</RibbonHeader>
 					<input type="number" className='field center' 
 											   min="1" 
 											   max={this.props.maxQuantity} 
