@@ -16,6 +16,8 @@ class Order {
         this.deliveryOptions = Order.getDeliveryOptions();
         this.selectedDeliveryOption = 0;
 
+        this.address = {};
+
         this.quantity = 1;
     }
 
@@ -41,7 +43,8 @@ class Order {
             unitPrice: this.getUnitPrice(),
             deliveryPrice: this.getDeliveryPrice(),
             totalPrice: this.getTotalPrice(),
-            isDelivery: this.isDelivery()
+            isDelivery: this.isDelivery(),
+            address: this.address
         };
 
         return connect.push('orders', pizzaOrderEvent);

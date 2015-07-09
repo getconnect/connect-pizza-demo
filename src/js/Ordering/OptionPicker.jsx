@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import { Row, Col } from 'rebass';
 import PageSection from '../Common/PageSection.jsx';
 import RibbonHeader from '../Common/RibbonHeader.jsx';
@@ -32,7 +32,7 @@ class OptionPickerCell extends React.Component {
         var { isSelected } = this.props;
         var isFaded = !isSelected && !this.state.isHovering;
 
-        var cellClasses = classNames(
+        var cellClasses = cx(
             'option-cell-height', 'rounded', 'm1', 'pointer', 'relative', 'flex', 'flex-column', 'flex-center', 'flex-justify-center',
             { 'faded': isFaded }, 
             { 'border': isSelected }, 

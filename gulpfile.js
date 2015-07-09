@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var cssify = require('cssify');
 var source = require('vinyl-source-stream');
 var browserSync = require('browser-sync').create();
 var cssNext = require('gulp-cssnext');
@@ -31,7 +32,7 @@ gulp.task('js', function () {
 		extensions: ['.jsx'],
 		debug: true
 	})
-	.transform(babelify)
+	.transform([babelify, cssify])
 	.bundle()
 	.pipe(source('index.js'))
 	.pipe(gulp.dest('./dist'))

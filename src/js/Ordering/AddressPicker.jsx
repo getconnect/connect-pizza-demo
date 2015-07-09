@@ -18,7 +18,7 @@ class AddressPicker extends React.Component {
     }
 }
 AddressPicker.propTypes = {
-    onAddressChanged: React.PropTypes.func
+    onAddressChanged: React.PropTypes.func.isRequired
 }
 
 export default AddressPicker;

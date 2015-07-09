@@ -21,7 +21,7 @@ class OrderForm extends React.Component {
     }
 
     render() {
-        var { order, orderPlaced } = this.state;
+        var { order, orderPlaced, isPlacingOrder } = this.state;
         var { pizzaOptions, 
               selectedPizzaOptions, 
               deliveryOptions, 
@@ -43,8 +43,8 @@ class OrderForm extends React.Component {
                 <OptionPicker {...pizzaOptions.sauce} selected={selectedPizzaOptions.sauce} onItemSelected={this.onSauceSelected} />
                 <QuantityPicker quantity={quantity} onQuantityUpdated={this.onQuantityUpdated.bind(this)} />
                 <OptionPicker {...deliveryOptions} selected={selectedDeliveryOption} onItemSelected={this.onDeliverySelected.bind(this)} />
-                <AddressPicker />
-                <TotalsSection total={totalPrice} onPlaceOrder={this.onPlaceOrder.bind(this)} />
+                <AddressPicker onAddressChanged={this.onAddressChanged.bind(this)} />
+                <TotalsSection total={totalPrice} isPlacingOrder={isPlacingOrder} onPlaceOrder={this.onPlaceOrder.bind(this)} />
             </Container>
         );
     }
@@ -52,7 +52,8 @@ class OrderForm extends React.Component {
     initialState() {
         return  {
             order: new Order(),
-            orderPlaced: false
+            orderPlaced: false,
+            isPlacingOrder: false
         }
     }
 
@@ -74,11 +75,21 @@ class OrderForm extends React.Component {
         this.setState(state);
     }
 
+    onAddressChanged(address) {
+        var state = this.state;
+        state.order.address = address;
+        this.setState(state);
+    }
+
     onPlaceOrder() {
-        var order = this.state.order;
-        order.placeOrder().then(() => {
+        var state = this.state;
+        state.isPlacingOrder = true;
+        this.setState(state);
+
+        this.state.order.placeOrder().then(() => {
             var state = this.state;
             state.orderPlaced = true;
+            state.isPlacingOrder = false;
             this.setState(state);
         });
     }
