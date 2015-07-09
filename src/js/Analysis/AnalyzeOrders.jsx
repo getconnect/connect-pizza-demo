@@ -2,6 +2,10 @@ import React from 'react';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
+import SalesByPeriod from './SalesByPeriod.jsx';
+import SalesByDay from './SalesByDay.jsx';
+import UnitsByType from './UnitsByType.jsx';
+import OrdersBySuburb from './OrdersBySuburb.jsx';
 import { Container, Row, Col } from 'rebass';
 
 class AnalyzeOrders extends React.Component {
@@ -20,10 +24,29 @@ class AnalyzeOrders extends React.Component {
                         <DollarSales></DollarSales>
                     </Col>
                 </Row>
-                
                 <Row>
                     <Col sm={12}>
                         <SalesOverTime></SalesOverTime>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={12}>
+                        <SalesByPeriod></SalesByPeriod>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={12}>
+                        <SalesByDay></SalesByDay>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={12}>
+                        <UnitsByType></UnitsByType>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={12}>
+                        <OrdersBySuburb></OrdersBySuburb>
                     </Col>
                 </Row>
             </Container>

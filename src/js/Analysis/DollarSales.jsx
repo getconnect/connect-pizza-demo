@@ -1,8 +1,7 @@
 import React from 'react';
 import connect from '../connect.js';
-import { Button, Badge } from 'rebass';
 import TextViz from './TextViz.jsx'
-import numeral from 'numeral';
+import formatters from './formatters.js';
 
 class DollarSales extends React.Component {
     constructor(props) {
@@ -26,11 +25,14 @@ class DollarSales extends React.Component {
 }
 
 DollarSales.defaultProps = { 
-    title: 'Electric Car Sales 2018 ($)',
     id: 'dollar-sales',
-    fieldName: 'totalSales',
-    formatter: (value) => {
-        return numeral(value).format('$0.0a');
+    textOptions: {
+        title: 'Sales ($)',
+        fields: {
+            totalSales: {
+                valueFormatter: formatters.dollars
+            }
+        }
     }
 }
 

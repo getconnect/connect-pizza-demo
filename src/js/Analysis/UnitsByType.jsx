@@ -3,7 +3,7 @@ import connect from '../connect.js';
 import ChartViz from './ChartViz.jsx';
 import formatters from './formatters.js';
 
-class SalesByTime extends React.Component {
+class UnitsByType extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -21,25 +21,24 @@ class SalesByTime extends React.Component {
                     sum: 'cost'
                 }
             })
-            .interval(this.props.interval);
+            .groupBy(['manufacturer']);
     }
 }
 
-SalesByTime.defaultProps = {
-    id: 'sales-over-time',
-    interval: 'monthly',
+UnitsByType.defaultProps = {
+    id: 'units-by-type',
     chartOptions: {
-        title: 'Sales Over Time',
+        title: 'Most Popular Pizza',
         fields: {
-            totalSales: {
-                label: 'Total Sales ($)',
-                valueFormatter: formatters.dollars
+            totalUnits: {
+                label: 'Total',
+                valueFormatter: formatters.units
             }
         },
         chart: {
-            type: 'area-spline'
+            type: 'bar'
         }
     }
 }
 
-export default SalesByTime;
+export default UnitsByType;

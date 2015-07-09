@@ -16,18 +16,9 @@ class TextViz extends React.Component {
     componentDidMount() {
         var query = this.props.query,
             container = React.findDOMNode(this.refs.textVizContainer),
-            title = this.props.title,
-            fieldName = this.props.fieldName,
-            formatter = this.props.formatter;
+            textOptions = this.props.textOptions;
 
-        this.viz = connect.text(query, container, {
-            title: title,
-            fields: {
-                [fieldName]: {
-                    valueFormatter: formatter
-                }
-            }
-        });
+        this.viz = connect.text(query, container, textOptions);
     }
 
     componentDidUpdate() {
