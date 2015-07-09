@@ -15,13 +15,13 @@ class SalesByPeriod extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
-            .select({                
+        return connect.query('orders')
+            .select({
                 totalSales: {
-                    sum: 'cost'
+                    sum: 'totalPrice'
                 }
             })
-            .groupBy(['manufacturer']);
+            .groupBy(['time.threeHourWindow', 'isDelivery']);
     }
 }
 
@@ -33,10 +33,16 @@ SalesByPeriod.defaultProps = {
             totalSales: {
                 label: 'Total Sales ($)',
                 valueFormatter: formatters.dollars
+            },
+            isDelivery: {
+                valueFormatter: (value) => value ? 'Delivered' : 'Pick Up'
             }
         },
         chart: {
-            type: 'bar'
+            type: 'bar',
+            yAxis: {
+                valueFormatter: formatters.dollars
+            }
         }
     }
 }

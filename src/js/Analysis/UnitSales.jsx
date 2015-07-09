@@ -15,10 +15,10 @@ class UnitSales extends React.Component {
     }
 
     getQuery() {
-        return connect.query('carsales')
+        return connect.query('orders')
                 .select({
-                    totalSales: {
-                        sum: 'cost'
+                    totalNumPizzas: {
+                        sum: 'quantity'
                     }
                 });
     }
@@ -29,7 +29,7 @@ UnitSales.defaultProps = {
     textOptions: {
         title: 'Sales (Units)',
         fields: {
-            totalSales: {
+            totalNumPizzas: {
                 valueFormatter: formatters.units
             }
         }
