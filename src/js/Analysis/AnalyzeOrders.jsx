@@ -2,7 +2,7 @@ import React from 'react';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
-import SalesByPeriod from './SalesByPeriod.jsx';
+import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
@@ -31,7 +31,7 @@ class AnalyzeOrders extends React.Component {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <SalesByPeriod></SalesByPeriod>
+                        <SalesByWindow></SalesByWindow>
                     </Col>
                 </Row>
                 <Row>
