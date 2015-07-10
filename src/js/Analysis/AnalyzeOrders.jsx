@@ -1,8 +1,9 @@
 import React from 'react';
+import HeaderLogo from '../Common/HeaderLogo.jsx';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
-import SalesByPeriod from './SalesByPeriod.jsx';
+import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
@@ -16,6 +17,7 @@ class AnalyzeOrders extends React.Component {
     render() {
         return (
             <Container>
+                <HeaderLogo />
                 <Row>
                     <Col sm={12} md={6}>
                         <UnitSales></UnitSales>
@@ -31,7 +33,7 @@ class AnalyzeOrders extends React.Component {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <SalesByPeriod></SalesByPeriod>
+                        <SalesByWindow></SalesByWindow>
                     </Col>
                 </Row>
                 <Row>
@@ -42,6 +44,11 @@ class AnalyzeOrders extends React.Component {
                 <Row>
                     <Col sm={12}>
                         <UnitsByType></UnitsByType>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm={12}>
+                        <OrdersBySuburb></OrdersBySuburb>
                     </Col>
                 </Row>
             </Container>
