@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Button } from 'rebass';
-import HeaderLogo from '../Common/HeaderLogo.jsx';
 import RibbonHeader from '../Common/RibbonHeader.jsx';
 
 class OrderConfirmation extends React.Component {
@@ -9,7 +8,6 @@ class OrderConfirmation extends React.Component {
 		var label = `Your pizza${quantity > 1 ? 's' : ''} will be ready shortly!`;
 		return (
 			<Container>
-				<HeaderLogo />
 				<div className="center mb4">
 					<RibbonHeader>Bellissimo!</RibbonHeader>
 					<h1 className="center mt3 mb3">{label}</h1>

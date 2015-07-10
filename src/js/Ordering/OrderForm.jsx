@@ -1,23 +1,11 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'rebass';
+import { Container, Row, Col } from 'rebass';
 import Order from './Order.js';
-import HeaderLogo from '../Common/HeaderLogo.jsx';
 import OrderConfirmation from './OrderConfirmation.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';
 import AddressPicker from './AddressPicker.jsx';
 import TotalsSection from './TotalsSection.jsx';
-
-class SwitchToDashboard extends React.Component {
-    render() {
-        console.log(this.props);
-        return (
-            <div className="absolute top-0 right-0 m1">
-                <Button onClick={this.props.onTogglePage}>Switch</Button>
-            </div>
-        );
-    }
-}
 
 class OrderForm extends React.Component {
 
@@ -47,8 +35,6 @@ class OrderForm extends React.Component {
 
         return (
             <Container>
-                <SwitchToDashboard onTogglePage={this.props.onTogglePage} />
-                <HeaderLogo />
                 <OptionPicker {...pizzaOptions.type} selected={selectedPizzaOptions.type} onItemSelected={this.onPizzaSelected} />
                 <OptionPicker {...pizzaOptions.size} selected={selectedPizzaOptions.size} onItemSelected={this.onSizeSelected} />
                 <OptionPicker {...pizzaOptions.base} selected={selectedPizzaOptions.base} onItemSelected={this.onBaseSelected} />

@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderLogo from '../Common/HeaderLogo.jsx';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
@@ -17,7 +16,6 @@ class AnalyzeOrders extends React.Component {
     render() {
         return (
             <Container>
-                <HeaderLogo />
                 <Row>
                     <Col sm={12} md={6}>
                         <UnitSales></UnitSales>
