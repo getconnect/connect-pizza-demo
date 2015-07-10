@@ -4,9 +4,6 @@ import ChartViz from './ChartViz.jsx';
 import formatters from './formatters.js';
 
 class SalesByTime extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -21,6 +18,7 @@ class SalesByTime extends React.Component {
                     sum: 'totalPrice'
                 }
             })
+            .timeframe(this.props.timeframe)
             .interval(this.props.interval);
     }
 }
