@@ -6,6 +6,7 @@ var source = require('vinyl-source-stream');
 var browserSync = require('browser-sync').create();
 var cssNext = require('gulp-cssnext');
 var concat = require('gulp-concat');
+var ghPages = require('gulp-gh-pages');
 
 var errorsFatal = false;
 
@@ -60,6 +61,11 @@ gulp.task('serve', ['dist'], function() {
         }
     });
     gulp.watch('./src/**/*.*', ['reload-dist']);
+});
+
+gulp.task('deploy', ['dist'], function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
 
 gulp.task('default', ['serve']);
