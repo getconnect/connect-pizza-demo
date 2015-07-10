@@ -6,6 +6,7 @@ import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
+import VizRow from './VizRow.jsx';
 import { Container, Row, Col } from 'rebass';
 
 class AnalyzeOrders extends React.Component {
@@ -16,39 +17,25 @@ class AnalyzeOrders extends React.Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Col sm={12} md={6}>
-                        <UnitSales></UnitSales>
-                    </Col>
-                    <Col sm={12} md={6}>
-                        <DollarSales></DollarSales>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <SalesOverTime></SalesOverTime>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <SalesByWindow></SalesByWindow>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <SalesByDay></SalesByDay>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <UnitsByType></UnitsByType>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={12}>
-                        <OrdersBySuburb></OrdersBySuburb>
-                    </Col>
-                </Row>
+                <VizRow>
+                    <UnitSales></UnitSales>
+                    <DollarSales></DollarSales>
+                </VizRow>
+                <VizRow>
+                    <SalesOverTime></SalesOverTime>
+                </VizRow>
+                <VizRow>
+                    <SalesByWindow></SalesByWindow>
+                </VizRow>
+                <VizRow>
+                    <SalesByDay></SalesByDay>
+                </VizRow>
+                <VizRow>
+                    <UnitsByType></UnitsByType>
+                </VizRow>
+                <VizRow>
+                    <OrdersBySuburb></OrdersBySuburb>
+                </VizRow>
             </Container>
         );
     }

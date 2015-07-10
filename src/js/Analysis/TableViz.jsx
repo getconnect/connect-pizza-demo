@@ -1,11 +1,9 @@
 import React from 'react';
 import connect from '../connect.js';
 import { Button, Badge } from 'rebass';
+import Timer from './RefreshTimer.js';
 
 class TableViz extends React.Component {
-    constructor(props) {
-        super(props);       
-    }
 
     render() {
         var style = {
@@ -23,6 +21,11 @@ class TableViz extends React.Component {
             tableOptions = this.props.tableOptions;
 
         this.viz = connect.table(query, container, tableOptions);
+        this.timer = new Timer(this.viz);
+    }
+
+    componentWillUnmount() {
+        this.timer.destroy();
     }
     
 

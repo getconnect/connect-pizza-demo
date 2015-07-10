@@ -1,6 +1,6 @@
 import React from 'react';
 import connect from '../connect.js';
-import { Button, Badge } from 'rebass';
+import Timer from './RefreshTimer.js';
 
 class ChartViz extends React.Component {
     constructor(props) {
@@ -23,6 +23,11 @@ class ChartViz extends React.Component {
             chartOptions = this.props.chartOptions;
 
         this.viz = connect.chart(query, container, chartOptions);
+        this.timer = new Timer(this.viz);
+    }
+
+    componentWillUnmount() {
+        this.timer.destroy;
     }
 
 
