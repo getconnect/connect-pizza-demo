@@ -30,22 +30,13 @@
   	--min-cell-height: 170px;
 }
 
-.option-cell-height {
-	min-height: var(--min-cell-height);
-}
+.option-cell-height { min-height: var(--min-cell-height); }
 
-.flex-justify-center {
-	justify-content: center;
-}
+.flex-justify-center { justify-content: center; }
 
-.pointer {
-	cursor: pointer;
-}
+.pointer { cursor: pointer; }
 
-.faded {
-	opacity: 0.5;
-}
+.faded { opacity: 0.5; }
 
-.transparent-border {
-	border: var(--border-width) solid transparent;
-}
+.transparent-border { border: var(--border-width) solid transparent; }
+

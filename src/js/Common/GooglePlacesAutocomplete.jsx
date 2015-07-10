@@ -39,5 +39,4 @@ GooglePlacesAutocomplete.propTypes = {
     onAddressChanged: React.PropTypes.func
 }
 
-
 export default GooglePlacesAutocomplete;

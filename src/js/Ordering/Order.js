@@ -47,6 +47,8 @@ class Order {
             address: this.address
         };
 
+        console.log(JSON.stringify(pizzaOrderEvent, null, 4));
+
         return connect.push('orders', pizzaOrderEvent);
     }
 
