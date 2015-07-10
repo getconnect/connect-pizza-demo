@@ -4,13 +4,10 @@ import ChartViz from './ChartViz.jsx';
 import formatters from './formatters.js';
 
 class UnitsByType extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <ChartViz {...this.props} query={this.getQuery()}></ChartViz>
+            <ChartViz {...this.props} query={this.getQuery()} />
         );
     }
 
@@ -19,12 +16,12 @@ class UnitsByType extends React.Component {
             .select({
                 totalNumPizzas: 'count'
             })
+            .timeframe(this.props.timeframe)
             .groupBy(['pizza.type.value']);
     }
 }
 
 UnitsByType.defaultProps = {
-    id: 'units-by-type',
     chartOptions: {
         title: 'Most Popular Pizza',
         fields: {

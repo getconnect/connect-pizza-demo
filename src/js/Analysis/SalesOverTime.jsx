@@ -7,7 +7,7 @@ class SalesByTime extends React.Component {
 
     render() {
         return (
-            <ChartViz {...this.props} query={this.getQuery()}></ChartViz>
+            <ChartViz {...this.props} query={this.getQuery()} />
         );
     }
 
@@ -24,7 +24,6 @@ class SalesByTime extends React.Component {
 }
 
 SalesByTime.defaultProps = {
-    id: 'sales-over-time',
     interval: 'daily',
     chartOptions: {
         title: 'Sales Over Time',

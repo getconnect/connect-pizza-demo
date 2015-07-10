@@ -4,13 +4,10 @@ import ChartViz from './ChartViz.jsx';
 import formatters from './formatters.js';
 
 class SalesByDay extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <ChartViz {...this.props} query={this.getQuery()}></ChartViz>
+            <ChartViz {...this.props} query={this.getQuery()} />
         );
     }
 
@@ -21,12 +18,12 @@ class SalesByDay extends React.Component {
                     sum: 'totalPrice'
                 }
             })
+            .timeframe(this.props.timeframe)
             .groupBy(['time.dayOfWeek']);
     }
 }
 
 SalesByDay.defaultProps = {
-    id: 'sales-by-day',
     chartOptions: {
         title: 'Sales By Day of the Week',
         fields: {

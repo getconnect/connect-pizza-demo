@@ -3,9 +3,6 @@ import connect from '../connect.js';
 import Timer from './RefreshTimer.js';
 
 class ChartViz extends React.Component {
-    constructor(props) {
-        super(props);       
-    }
 
     render() {
         var style = {
@@ -13,7 +10,7 @@ class ChartViz extends React.Component {
         };
 
         return (
-            <div id={this.props.id} ref="chartVizContainer" style={style}></div>
+            <div ref="chartVizContainer" style={style} />
         );
     }
 
@@ -29,7 +26,6 @@ class ChartViz extends React.Component {
     componentWillUnmount() {
         this.timer.destroy;
     }
-
 
     componentDidUpdate() {
         this.viz.update(this.props.query);

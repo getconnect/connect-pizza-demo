@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col } from 'rebass';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
@@ -7,7 +8,8 @@ import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
 import VizRow from './VizRow.jsx';
-import { Container, Row, Col } from 'rebass';
+import PageSection from '../Common/PageSection.jsx';
+import TimeframeFilter from './TimeframeFilter.jsx';
 
 class AnalyzeOrders extends React.Component {
     constructor(props) {
@@ -22,25 +24,26 @@ class AnalyzeOrders extends React.Component {
         let { timeframe } = this.state;
         return (
             <Container>
-                <VizRow>
-                    <UnitSales></UnitSales>
-                    <DollarSales></DollarSales>
-                </VizRow>
-                <VizRow>
-                    <SalesOverTime></SalesOverTime>
-                </VizRow>
-                <VizRow>
-                    <SalesByWindow></SalesByWindow>
-                </VizRow>
-                <VizRow>
-                    <SalesByDay></SalesByDay>
-                </VizRow>
-                <VizRow>
-                    <UnitsByType></UnitsByType>
-                </VizRow>
-                <VizRow>
-                    <OrdersBySuburb></OrdersBySuburb>
-                </VizRow>
+                <TimeframeFilter timeframe={timeframe} onTimeframeChanged={this.onTimeframeChanged.bind(this)} />
+                <Row>
+                    <Col md={6}><UnitSales timeframe={timeframe}/></Col>
+                    <Col md={6}><DollarSales timeframe={timeframe}/></Col>
+                </Row>
+                <PageSection>
+                    <SalesOverTime timeframe={timeframe}/>
+                </PageSection>
+                <PageSection>
+                    <SalesByWindow timeframe={timeframe}/>
+                </PageSection>
+                <PageSection>
+                    <SalesByDay timeframe={timeframe}/>
+                </PageSection>
+                <PageSection>
+                    <UnitsByType timeframe={timeframe}/>
+                </PageSection>
+                <PageSection>
+                    <OrdersBySuburb timeframe={timeframe}/>
+                </PageSection>
             </Container>
         );
     }

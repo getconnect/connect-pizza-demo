@@ -6,13 +6,10 @@ import formatters from './formatters.js';
 import _ from 'underscore';
 
 class SalesByWindow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <ChartViz {...this.props} query={() => this.getQuery()}></ChartViz>
+            <ChartViz {...this.props} query={() => this.getQuery()} />
         );
     }
 
@@ -23,6 +20,7 @@ class SalesByWindow extends React.Component {
                     sum: 'totalPrice'
                 }
             })
+            .timeframe(this.props.timeframe)
             .groupBy(['time.threeHourWindow', 'isDelivery'])
             .execute()
             .then((response) => {
@@ -53,7 +51,6 @@ class SalesByWindow extends React.Component {
 }
 
 SalesByWindow.defaultProps = {
-    id: 'sales-by-period',
     chartOptions: {
         title: 'Sales By Time Period',
         fields: {

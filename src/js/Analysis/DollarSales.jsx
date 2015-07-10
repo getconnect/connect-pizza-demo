@@ -4,13 +4,10 @@ import TextViz from './TextViz.jsx'
 import formatters from './formatters.js';
 
 class DollarSales extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <TextViz {...this.props} query={this.getQuery()}></TextViz>
+            <TextViz {...this.props} query={this.getQuery()} />
         );
     }
 
@@ -20,12 +17,12 @@ class DollarSales extends React.Component {
                     totalSales: {
                         sum: 'totalPrice'
                     }
-                });
+                })
+                .timeframe(this.props.timeframe);
     }
 }
 
-DollarSales.defaultProps = { 
-    id: 'dollar-sales',
+DollarSales.defaultProps = {
     textOptions: {
         title: 'Sales ($)',
         fields: {

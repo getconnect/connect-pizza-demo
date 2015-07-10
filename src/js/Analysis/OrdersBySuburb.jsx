@@ -35,6 +35,7 @@ class OrdersBySuburb extends React.Component {
                         sum: 'totalPrice'
                     }
                 })
+                .timeframe(this.props.timeframe)
                 .groupBy([suburbProperty])
                 .execute()
                 .then((response) => {
@@ -47,7 +48,6 @@ class OrdersBySuburb extends React.Component {
 }
 
 OrdersBySuburb.defaultProps = {
-    id: 'orders-by-suburb',
     tableOptions: {
         fields: {
             'address.components.locality': {

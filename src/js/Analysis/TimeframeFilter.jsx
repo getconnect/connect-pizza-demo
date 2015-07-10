@@ -23,13 +23,18 @@ class TimeframeFilter extends React.Component {
     render() {
         let { options } = this.props;
         let { showDropdown, timeframe } = this.state;
+
         let caption = _(options).find((o) => o.value === timeframe).caption;
+        let dropdownOptions = _(options).map((o) => {
+            return <a key={o.value} className="block btn" onClick={this.updateSelection.bind(this, o.value)}>{o.caption}</a>
+        });
+
         return (
             <span className="relative">
                 <a className="btn" onClick={this.toggleDropdown.bind(this)}>{caption}</a>
                 { showDropdown ? (
                     <div className="absolute bg-white border rounded z1 right-0" style={{width: '250px'}}>
-                    { options.map(o => <a key={o.value} className="block btn" onClick={this.updateSelection.bind(this, o.value)}>{o.caption}</a>) }
+                        { dropdownOptions }
                     </div>
                 ) : null }
             </span>

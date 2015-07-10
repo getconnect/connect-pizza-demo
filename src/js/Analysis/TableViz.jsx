@@ -28,7 +28,6 @@ class TableViz extends React.Component {
         this.timer.destroy();
     }
     
-
     componentDidUpdate() {
         this.viz.update(this.props.query);
     }
