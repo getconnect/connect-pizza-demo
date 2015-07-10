@@ -14,7 +14,7 @@ class UnitsByType extends React.Component {
     getQuery() {
         return connect.query('orders')
             .select({
-                totalNumPizzas: 'count'
+                totalNumPizzas: { sum: 'quantity' }
             })
             .timeframe(this.props.timeframe)
             .groupBy(['pizza.type.value']);

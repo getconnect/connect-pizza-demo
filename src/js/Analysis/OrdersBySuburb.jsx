@@ -7,13 +7,10 @@ import formatters from './formatters.js';
 var suburbNameMapper = (suburbName) => !suburbName ? 'Unknown' : suburbName;
 
 class OrdersBySuburb extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
-            <TableViz {...this.props} query={() => this.getQuery()}></TableViz>
+            <TableViz {...this.props} query={() => this.getQuery()} />
         );
     }
 

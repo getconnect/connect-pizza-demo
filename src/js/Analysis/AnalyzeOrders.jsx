@@ -22,27 +22,32 @@ class AnalyzeOrders extends React.Component {
 
     render() {
         let { timeframe } = this.state;
+
+        let interval = this.bestIntervalFor(timeframe);
+
         return (
             <Container>
                 <TimeframeFilter timeframe={timeframe} onTimeframeChanged={this.onTimeframeChanged.bind(this)} />
-                <Row>
-                    <Col md={6}><UnitSales timeframe={timeframe}/></Col>
-                    <Col md={6}><DollarSales timeframe={timeframe}/></Col>
-                </Row>
                 <PageSection>
-                    <SalesOverTime timeframe={timeframe}/>
+                    <Row>
+                        <Col md={6}><UnitSales timeframe={timeframe}/></Col>
+                        <Col md={6}><DollarSales timeframe={timeframe}/></Col>
+                    </Row>
                 </PageSection>
                 <PageSection>
-                    <SalesByWindow timeframe={timeframe}/>
+                    <SalesOverTime timeframe={timeframe} interval={interval} />
                 </PageSection>
                 <PageSection>
-                    <SalesByDay timeframe={timeframe}/>
+                    <SalesByWindow timeframe={timeframe} />
                 </PageSection>
                 <PageSection>
-                    <UnitsByType timeframe={timeframe}/>
+                    <SalesByDay timeframe={timeframe} />
                 </PageSection>
                 <PageSection>
-                    <OrdersBySuburb timeframe={timeframe}/>
+                    <UnitsByType timeframe={timeframe} />
+                </PageSection>
+                <PageSection>
+                    <OrdersBySuburb timeframe={timeframe} />
                 </PageSection>
             </Container>
         );
@@ -50,6 +55,16 @@ class AnalyzeOrders extends React.Component {
 
     onTimeframeChanged(newTimeframe) {
         this.setState({ timeframe: newTimeframe});
+    }
+
+    bestIntervalFor(timeframe) {
+        switch (timeframe) {
+            case 'today':
+            case 'yesterday':
+                return 'hourly';
+            default:
+                return 'daily';
+        }
     }
 }
 

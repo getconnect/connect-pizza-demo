@@ -11,7 +11,7 @@ class TableViz extends React.Component {
         };
 
         return (
-            <div id={this.props.id} ref="tableVizContainer" style={style}></div>
+            <div ref="tableVizContainer" style={style} />
         );
     }
 
