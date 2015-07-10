@@ -1,12 +1,10 @@
 import React from 'react';
 import connect from '../connect.js';
 import { Button, Badge } from 'rebass';
+import Timer from './RefreshTimer.js';
 
 class TextViz extends React.Component {
-    constructor(props) {
-        super(props);       
-    }
-
+    
     render() {
         return (
             <div id={this.props.id} ref="textVizContainer"></div>
@@ -19,6 +17,11 @@ class TextViz extends React.Component {
             textOptions = this.props.textOptions;
 
         this.viz = connect.text(query, container, textOptions);
+        this.timer = new Timer(this.viz);
+    }
+
+    componentWillUnmount() {
+        this.timer.destroy();
     }
 
     componentDidUpdate() {

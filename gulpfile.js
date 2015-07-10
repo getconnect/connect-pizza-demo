@@ -18,7 +18,9 @@ function handleError(error) {
 }
 
 gulp.task('css', function() {
-  return gulp.src(["./node_modules/connect-js-viz/node_modules/connect-js-c3/c3.css", "./node_modules/connect-js-viz/css/connect-viz.css", "./src/css/base.css"])
+  return gulp.src(["./node_modules/connect-js-viz/node_modules/connect-js-c3/c3.css", 
+                   "./node_modules/connect-js-viz/css/connect-viz.css", 
+                   "./src/css/base.css"])
     .pipe(cssNext({
         compress: true
     }))

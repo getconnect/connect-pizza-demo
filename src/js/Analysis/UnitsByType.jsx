@@ -35,7 +35,7 @@ UnitsByType.defaultProps = {
         },
         chart: {
             type: 'bar',
-            colors: ['#3498db']
+            colors: ['#d35400']
         }
     }
 }

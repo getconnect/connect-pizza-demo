@@ -6,8 +6,7 @@ import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
-import TimeframeFilter from './TimeframeFilter.jsx';
-import PageSection from '../Common/PageSection.jsx';
+import VizRow from './VizRow.jsx';
 import { Container, Row, Col } from 'rebass';
 
 class AnalyzeOrders extends React.Component {
@@ -23,33 +22,25 @@ class AnalyzeOrders extends React.Component {
         let { timeframe } = this.state;
         return (
             <Container>
-                <TimeframeFilter timeframe={timeframe} onTimeframeChanged={this.onTimeframeChanged.bind(this)}/>
-                <Row>
-                    <Col sm={12} md={6}>
-                        <UnitSales timeframe={timeframe}/>
-                    </Col>
-                    <Col sm={12} md={6}>
-                        <DollarSales timeframe={timeframe}/>
-                    </Col>
-                </Row>
-                <PageSection>
-                    <SalesOverTime timeframe={timeframe}/>
-                </PageSection>
-                <PageSection>
-                    <SalesOverTime timeframe={timeframe}/>
-                </PageSection>
-                <PageSection>
-                    <SalesByWindow timeframe={timeframe}/>
-                </PageSection>
-                <PageSection>
-                    <SalesByDay timeframe={timeframe}/>
-                </PageSection>
-                <PageSection>
-                    <UnitsByType timeframe={timeframe}/>
-                </PageSection>
-                <PageSection>
-                    <OrdersBySuburb timeframe={timeframe}/>
-                </PageSection>
+                <VizRow>
+                    <UnitSales></UnitSales>
+                    <DollarSales></DollarSales>
+                </VizRow>
+                <VizRow>
+                    <SalesOverTime></SalesOverTime>
+                </VizRow>
+                <VizRow>
+                    <SalesByWindow></SalesByWindow>
+                </VizRow>
+                <VizRow>
+                    <SalesByDay></SalesByDay>
+                </VizRow>
+                <VizRow>
+                    <UnitsByType></UnitsByType>
+                </VizRow>
+                <VizRow>
+                    <OrdersBySuburb></OrdersBySuburb>
+                </VizRow>
             </Container>
         );
     }
