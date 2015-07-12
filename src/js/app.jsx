@@ -3,7 +3,6 @@ import { Button } from 'rebass';
 import { polyfill } from 'babelify';
 import OrderForm from './Ordering/OrderForm.jsx';
 import AnalyzeOrders from './Analysis/AnalyzeOrders.jsx';
-import HeaderLogo from './Common/HeaderLogo.jsx';
 
 class TogglePageButton extends React.Component {
     render() {
@@ -30,7 +29,6 @@ class App extends React.Component {
         var { isAnalyzing } = this.state;
         return (
             <div>
-                <HeaderLogo />
                 <TogglePageButton onTogglePage={this.onTogglePage.bind(this)} 
                                    isAnalyzing={isAnalyzing} />
                 {isAnalyzing ? <AnalyzeOrders/> : <OrderForm/>}

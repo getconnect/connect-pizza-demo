@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'rebass';
 import Order from './Order.js';
+import HeaderLogo from '../Common/HeaderLogo.jsx';
 import OrderConfirmation from './OrderConfirmation.jsx';
 import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';
@@ -35,6 +36,7 @@ class OrderForm extends React.Component {
 
         return (
             <Container>
+                <HeaderLogo />
                 <OptionPicker {...pizzaOptions.type} selected={selectedPizzaOptions.type} onItemSelected={this.onPizzaSelected} />
                 <OptionPicker {...pizzaOptions.size} selected={selectedPizzaOptions.size} onItemSelected={this.onSizeSelected} />
                 <OptionPicker {...pizzaOptions.base} selected={selectedPizzaOptions.base} onItemSelected={this.onBaseSelected} />
