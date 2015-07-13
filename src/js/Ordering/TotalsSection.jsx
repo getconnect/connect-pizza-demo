@@ -11,7 +11,7 @@ class TotalsSection extends React.Component {
         var formattedTotal = Numeral(total).format('$0,0.00');
 
         var buttonOrSpinner = isPlacingOrder ? 
-            <Spinner className="block mx-auto" spinnerName='double-bounce' /> :
+            <Spinner className="block mx-auto" spinnerName='double-bounce' noFadeIn /> :
             <Button color="black" onClick={onPlaceOrder}>Place Order</Button>
 
         return (

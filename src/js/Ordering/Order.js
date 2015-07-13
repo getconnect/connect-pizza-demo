@@ -40,11 +40,12 @@ class Order {
             time: denormalise.dateTime(),
             quantity: this.quantity,
             pizza: pizzaOptions,
-            unitPrice: this.getUnitPrice(),
-            deliveryPrice: this.getDeliveryPrice(),
-            totalPrice: this.getTotalPrice(),
+            address: this.address,
             isDelivery: this.isDelivery(),
-            address: this.address
+            deliveryType: this.getDeliveryType(),
+            deliveryPrice: this.getDeliveryPrice(),
+            unitPrice: this.getUnitPrice(),
+            totalPrice: this.getTotalPrice()
         };
 
         console.log(JSON.stringify(pizzaOrderEvent, null, 4));
@@ -52,7 +53,7 @@ class Order {
         return connect.push('orders', pizzaOrderEvent);
     }
 
-    isDelivery() { return this.selectedDeliveryOption === 1 };
+    isDelivery() { return this.selectedDeliveryOption != 0 };
 
     getUnitPrice() {
         return Object.keys(this.pizzaOptions).reduce((total, option) => {
@@ -60,6 +61,10 @@ class Order {
             var selectedOption = this.pizzaOptions[option].options[selectedIndex];
             return total + selectedOption.price;
         }, 0);
+    }
+
+    getDeliveryType() {
+        return this.deliveryOptions.options[this.selectedDeliveryOption].title;
     }
 
     getDeliveryPrice() {
@@ -122,7 +127,8 @@ class Order {
             isExtra: true,
             options: [
                 { title: 'Pickup', price: 0, imageUrl: 'images/pickup.png' },
-                { title: 'Delivery', price: 4, imageUrl: 'images/delivery.png' }
+                { title: 'Delivery', price: 4, imageUrl: 'images/delivery.png' },
+                { title: 'Express Drone', price: 30, imageUrl: 'images/drone.png' }
             ]
         };
     }
