@@ -10,10 +10,11 @@ import OrdersBySuburb from './OrdersBySuburb.jsx';
 import VizRow from './VizRow.jsx';
 import PageSection from '../Common/PageSection.jsx';
 import TimeframeFilter from './TimeframeFilter.jsx';
+import HeaderTitle from '../common/HeaderTitle.jsx';
 
 class AnalyzeOrders extends React.Component {
     constructor(props) {
-        super(props);      
+        super(props);
 
         this.state = {
             timeframe: 'this_week'
@@ -26,30 +27,34 @@ class AnalyzeOrders extends React.Component {
         let interval = this.bestIntervalFor(timeframe);
 
         return (
-            <Container>
-                <TimeframeFilter timeframe={timeframe} onTimeframeChanged={this.onTimeframeChanged.bind(this)} />
-                <PageSection>
-                    <Row>
-                        <Col md={6}><UnitSales timeframe={timeframe}/></Col>
-                        <Col md={6}><DollarSales timeframe={timeframe}/></Col>
-                    </Row>
-                </PageSection>
-                <PageSection>
-                    <SalesOverTime timeframe={timeframe} interval={interval} />
-                </PageSection>
-                <PageSection>
-                    <SalesByWindow timeframe={timeframe} />
-                </PageSection>
-                <PageSection>
-                    <SalesByDay timeframe={timeframe} />
-                </PageSection>
-                <PageSection>
-                    <UnitsByType timeframe={timeframe} />
-                </PageSection>
-                <PageSection>
-                    <OrdersBySuburb timeframe={timeframe} />
-                </PageSection>
-            </Container>
+            <div>
+                <HeaderTitle title="Pizza Intelligence" onPageChange={ () => this.props.onPageChange() }>
+                    <TimeframeFilter timeframe={timeframe} onTimeframeChanged={(newTimeframe) => this.onTimeframeChanged(newTimeframe)}/>
+                </HeaderTitle>
+                <Container>
+                    <PageSection>
+                        <Row>
+                            <Col md={6}><UnitSales timeframe={timeframe}/></Col>
+                            <Col md={6}><DollarSales timeframe={timeframe}/></Col>
+                        </Row>
+                    </PageSection>
+                    <PageSection>
+                        <SalesOverTime timeframe={timeframe} interval={interval} />
+                    </PageSection>
+                    <PageSection>
+                        <SalesByWindow timeframe={timeframe} />
+                    </PageSection>
+                    <PageSection>
+                        <SalesByDay timeframe={timeframe} />
+                    </PageSection>
+                    <PageSection>
+                        <UnitsByType timeframe={timeframe} />
+                    </PageSection>
+                    <PageSection>
+                        <OrdersBySuburb timeframe={timeframe} />
+                    </PageSection>
+                </Container>
+            </div>
         );
     }
 

@@ -1,6 +1,6 @@
 class RefreshTimer {
     constructor(viz, milliseconds) {
-        this.refreshMilliseconds = milliseconds || 1000;
+        this.refreshMilliseconds = milliseconds || 5000;
         this.viz = viz;
         this.timerId = setTimeout(() => this.refresh(), this.refreshMilliseconds)
     }
