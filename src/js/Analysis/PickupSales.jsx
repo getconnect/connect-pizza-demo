@@ -23,13 +23,17 @@ class PickupSales extends React.Component {
             .groupBy(['isDelivery'])
             .execute()
             .then((response) => {
+                if (!response.results || !response.results.length)
+                    return response;
+
                 var sumFunction = (currentTotal, sale) => currentTotal + sale.totalSales,
                     totalSales = _.reduce(response.results, sumFunction, 0),
-                    pickupSales = _.find(response.results, { isDelivery: false }).totalSales;
+                    pickupSales = _.where(response.results, { isDelivery: false }),
+                    totalPickupSales = _.reduce(pickupSales, sumFunction, 0);
 
                 response.results = [{
                     totalSales: totalSales,
-                    pickupSales: pickupSales
+                    totalPickupSales: totalPickupSales
                 }];
 
                 response.metadata.groups = [];
@@ -43,7 +47,7 @@ PickupSales.defaultProps = {
     chartOptions: {
         title: 'Pickup Sales',
         fields: {
-            pickupSales: {
+            totalPickupSales: {
                 label: 'Pickup Sales',
                 valueFormatter: formatters.dollars
             }

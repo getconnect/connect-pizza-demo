@@ -4,7 +4,7 @@ import GaugeViz from './GaugeViz.jsx';
 import formatters from './formatters.js';
 import _ from 'underscore'
 
-class DevliverySales extends React.Component {
+class DeliverySales extends React.Component {
 
     render() {
         return (
@@ -23,13 +23,17 @@ class DevliverySales extends React.Component {
             .groupBy(['isDelivery'])
             .execute()
             .then((response) => {
+                if (!response.results || !response.results.length)
+                    return response;
+
                 var sumFunction = (currentTotal, sale) => currentTotal + sale.totalSales,
                     totalSales = _.reduce(response.results, sumFunction, 0),
-                    deliverySales = _.find(response.results, { isDelivery: true }).totalSales;
+                    deliverySales = _.where(response.results, { isDelivery: true }),
+                    totalDeliverySales = _.reduce(deliverySales, sumFunction, 0);
 
                 response.results = [{
                     totalSales: totalSales,
-                    deliverySales: deliverySales
+                    totalDeliverySales: totalDeliverySales
                 }];
 
                 response.metadata.groups = [];
@@ -39,12 +43,12 @@ class DevliverySales extends React.Component {
     }
 }
 
-DevliverySales.defaultProps = {
+DeliverySales.defaultProps = {
     chartOptions: {
-        title: 'Devlivery Sales',
+        title: 'Delivery Sales',
         fields: {
-            deliverySales: {
-                label: 'Devlivery Sales',
+            totalDeliverySales: {
+                label: 'Delivery Sales',
                 valueFormatter: formatters.dollars
             }
         },
@@ -56,4 +60,4 @@ DevliverySales.defaultProps = {
     }
 }
 
-export default DevliverySales;
+export default DeliverySales;
