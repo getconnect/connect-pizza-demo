@@ -12,31 +12,31 @@ class SalesByTime extends React.Component {
     }
 
     getQuery() {
-        return connect.query('orders')
+        return connect.query('orders') //orders is the collection we want to query.
             .select({                
-                totalSales: {
-                    sum: 'totalPrice'
+                totalSales: { //totalSales is an alias for our sum: 'totalPrice' aggregation.
+                    sum: 'totalPrice' //we are summing the value of the totalPrice field in our events.
                 }
             })
-            .timeframe(this.props.timeframe)
-            .interval(this.props.interval);
+            .timeframe(this.props.timeframe) // eg. 'this_week'
+            .interval(this.props.interval) // eg. 'daily'
+            .timezone('Australia/Brisbane'); //The timezone we want to see the results in.
     }
 }
 
 SalesByTime.defaultProps = {
-    interval: 'daily',
     chartOptions: {
-        title: 'Sales Over Time',
+        title: 'Sales Over Time', //The title above the chart
         fields: {
             totalSales: {
-                label: 'Total Sales ($)',
-                valueFormatter: formatters.dollars
+                label: 'Total Sales ($)', //The label used in the legend / tooltip
+                valueFormatter: formatters.dollars //The formatter used for 'totalSales' values
             }
         },
         chart: {
-            type: 'area-spline',
+            type: 'area-spline', //The type of chart
             yAxis: {
-                valueFormatter: formatters.dollars
+                valueFormatter: formatters.dollars //The formatter used for the values on teh y axis.
             }
         }
     }
