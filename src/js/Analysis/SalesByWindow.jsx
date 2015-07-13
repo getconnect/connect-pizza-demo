@@ -21,7 +21,7 @@ class SalesByWindow extends React.Component {
                 }
             })
             .timeframe(this.props.timeframe)
-            .groupBy(['time.threeHourWindow', 'isDelivery'])
+            .groupBy(['time.threeHourWindow', 'isDelivery', 'deliveryType'])
             .execute()
             .then((response) => {
                 var groups = response.metadata.groups;
@@ -30,14 +30,25 @@ class SalesByWindow extends React.Component {
                     .chain(response.results)
                     .groupBy('time.threeHourWindow')
                     .map((salesByDelivery, threeHourWindow) => {
+                        console.log(salesByDelivery)
+                        var deliverySales = _.filter(salesByDelivery, (saleByDelivery) => {
+                                var isDeliveryWithNoType = saleByDelivery.isDelivery && !saleByDelivery.deliveryType,
+                                    isStandardDelivery = saleByDelivery.deliveryType === 'Delivery';
 
-                        var deliverySales = _.where(salesByDelivery, { isDelivery: true }), 
+                                return isDeliveryWithNoType || isStandardDelivery;
+                            }),
+                            droneSales = _.filter(salesByDelivery, (saleByDelivery) => {
+                                var isDroneDelivery = saleByDelivery.deliveryType === 'Express Drone';
+
+                                return isDroneDelivery;
+                            }),
                             pickupSales = _.where(salesByDelivery, { isDelivery: false }),
                             sumFunction = (currentTotal, saleByDelivery) => currentTotal + saleByDelivery.totalSales;
 
                         return {
                             'time.threeHourWindow': threeHourWindow,
                             totalDeliverySales: _.reduce(deliverySales, sumFunction, 0),
+                            totalDroneSales: _.reduce(droneSales, sumFunction, 0),
                             totalPickupSales: _.reduce(pickupSales, sumFunction, 0)
                         }
                     })
@@ -56,6 +67,10 @@ SalesByWindow.defaultProps = {
         fields: {
             totalDeliverySales: {
                 label: 'Delivery Sales ($)',
+                valueFormatter: formatters.dollars
+            },
+            totalDroneSales: {
+                label: 'Drone Sales ($)',
                 valueFormatter: formatters.dollars
             },
             totalPickupSales: {
