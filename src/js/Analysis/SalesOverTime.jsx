@@ -24,7 +24,6 @@ class SalesByTime extends React.Component {
 }
 
 SalesByTime.defaultProps = {
-    interval: 'daily',
     chartOptions: {
         title: 'Sales Over Time',
         fields: {

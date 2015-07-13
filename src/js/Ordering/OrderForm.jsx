@@ -89,12 +89,13 @@ class OrderForm extends React.Component {
         state.isPlacingOrder = true;
         this.setState(state);
 
-        this.state.order.placeOrder().then(() => {
-            var state = this.state;
-            state.orderPlaced = true;
-            state.isPlacingOrder = false;
-            this.setState(state);
-        });
+        this.state.order.placeOrder()
+            .then(() => {
+                var state = this.state;
+                state.orderPlaced = true;
+                state.isPlacingOrder = false;
+                this.setState(state);
+            });
     }
 
     onOrderAgain() {

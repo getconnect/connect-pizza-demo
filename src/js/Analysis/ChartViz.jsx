@@ -5,12 +5,8 @@ import Timer from './RefreshTimer.js';
 class ChartViz extends React.Component {
 
     render() {
-        var style = {
-            height: '250px'
-        };
-
         return (
-            <div ref="chartVizContainer" style={style} />
+            <div ref="chartVizContainer" style={{ height: '250px' }} />
         );
     }
 
