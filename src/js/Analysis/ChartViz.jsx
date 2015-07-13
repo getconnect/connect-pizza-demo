@@ -24,7 +24,8 @@ class ChartViz extends React.Component {
     }
 
     componentWillUnmount() {
-        this.timer.destroy;
+        this.timer.destroy();
+        this.viz.destroy();
     }
 
     componentDidUpdate() {

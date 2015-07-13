@@ -29,7 +29,7 @@ class AnalyzeOrders extends React.Component {
         return (
             <div>
                 <HeaderTitle title="Pizza Intelligence" onPageChange={ () => this.props.onPageChange() }>
-                    <TimeframeFilter timeframe={timeframe} onTimeframeChanged={this.onTimeframeChanged.bind(this)} />                
+                    <TimeframeFilter timeframe={timeframe} onTimeframeChanged={(newTimeframe) => this.onTimeframeChanged(newTimeframe)}/>
                 </HeaderTitle>
                 <Container>
                     <PageSection>

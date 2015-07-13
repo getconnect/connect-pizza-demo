@@ -26,6 +26,7 @@ class TableViz extends React.Component {
 
     componentWillUnmount() {
         this.timer.destroy();
+        this.viz.destroy();
     }
     
     componentDidUpdate() {
