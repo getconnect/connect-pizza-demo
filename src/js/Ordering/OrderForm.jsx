@@ -7,6 +7,7 @@ import OptionPicker from './OptionPicker.jsx';
 import QuantityPicker from './QuantityPicker.jsx';
 import AddressPicker from './AddressPicker.jsx';
 import TotalsSection from './TotalsSection.jsx';
+import ViewChanger from '../common/ViewChanger.jsx';
 
 class OrderForm extends React.Component {
 
@@ -36,7 +37,7 @@ class OrderForm extends React.Component {
 
         return (
             <Container>
-                <HeaderLogo onPageChange={ () => this.props.onPageChange() } />
+                <HeaderLogo />
                 <OptionPicker {...pizzaOptions.type} selected={selectedPizzaOptions.type} onItemSelected={this.onPizzaSelected} />
                 <OptionPicker {...pizzaOptions.size} selected={selectedPizzaOptions.size} onItemSelected={this.onSizeSelected} />
                 <OptionPicker {...pizzaOptions.base} selected={selectedPizzaOptions.base} onItemSelected={this.onBaseSelected} />
@@ -44,7 +45,9 @@ class OrderForm extends React.Component {
                 <QuantityPicker quantity={quantity} onQuantityUpdated={this.onQuantityUpdated.bind(this)} />
                 <OptionPicker {...deliveryOptions} selected={selectedDeliveryOption} onItemSelected={this.onDeliverySelected.bind(this)} />
                 <AddressPicker onAddressChanged={this.onAddressChanged.bind(this)} />
-                <TotalsSection total={totalPrice} isPlacingOrder={isPlacingOrder} onPlaceOrder={this.onPlaceOrder.bind(this)} />
+                <TotalsSection total={totalPrice} isPlacingOrder={isPlacingOrder} onPlaceOrder={this.onPlaceOrder.bind(this)} />                
+                <hr className="mb4"/>
+                <ViewChanger iconName="ion-connection-bars" text="View Analytics" onPageChanged={ () => this.props.onPageChanged() } />
             </Container>
         );
     }

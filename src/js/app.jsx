@@ -17,8 +17,8 @@ class App extends React.Component {
         return (
             <div>
                 {isAnalyzing ? 
-                    <AnalyzeOrders onPageChange={() => this.onTogglePage(false)}/> : 
-                    <OrderForm onPageChange={() => this.onTogglePage(true)}/>
+                    <AnalyzeOrders onPageChanged={() => this.onTogglePage(false)}/> : 
+                    <OrderForm onPageChanged={() => this.onTogglePage(true)}/>
                 }
             </div>
         );

@@ -3,6 +3,8 @@ import { Container, Row, Col } from 'rebass';
 import UnitSales from './UnitSales.jsx';
 import DollarSales from './DollarSales.jsx';
 import SalesOverTime from './SalesOverTime.jsx';
+import PickupSales from './PickupSales.jsx';
+import DeliverySales from './DeliverySales.jsx';
 import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
 import UnitsByType from './UnitsByType.jsx';
@@ -11,6 +13,7 @@ import VizRow from './VizRow.jsx';
 import PageSection from '../Common/PageSection.jsx';
 import TimeframeFilter from './TimeframeFilter.jsx';
 import HeaderTitle from '../common/HeaderTitle.jsx';
+import ViewChanger from '../common/ViewChanger.jsx';
 
 class AnalyzeOrders extends React.Component {
     constructor(props) {
@@ -28,7 +31,7 @@ class AnalyzeOrders extends React.Component {
 
         return (
             <div>
-                <HeaderTitle title="Pizza Intelligence" onPageChange={ () => this.props.onPageChange() }>
+                <HeaderTitle title="Pizza Intelligence">
                     <TimeframeFilter timeframe={timeframe} onTimeframeChanged={(newTimeframe) => this.onTimeframeChanged(newTimeframe)}/>
                 </HeaderTitle>
                 <Container>
@@ -36,6 +39,12 @@ class AnalyzeOrders extends React.Component {
                         <Row>
                             <Col md={6}><UnitSales timeframe={timeframe}/></Col>
                             <Col md={6}><DollarSales timeframe={timeframe}/></Col>
+                        </Row>
+                    </PageSection>
+                    <PageSection>
+                        <Row>
+                            <Col md={6}><PickupSales timeframe={timeframe} /></Col>
+                            <Col md={6}><DeliverySales timeframe={timeframe} /></Col>
                         </Row>
                     </PageSection>
                     <PageSection>
@@ -53,6 +62,7 @@ class AnalyzeOrders extends React.Component {
                     <PageSection>
                         <OrdersBySuburb timeframe={timeframe} />
                     </PageSection>
+                    <ViewChanger iconName="ion-pizza" text="Order Pizza" onPageChanged={ () => this.props.onPageChanged() } />
                 </Container>
             </div>
         );

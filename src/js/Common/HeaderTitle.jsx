@@ -8,7 +8,7 @@ class HeaderTitle extends React.Component {
 
         return (
             <div className="flex flex-center m2 mb4">
-                <img src="images/pizza-logo.png" className="flex-none" style={imageStyle} onDoubleClick={ () => this.props.onPageChange() }></img>
+                <img src="images/pizza-logo.png" className="flex-none" style={imageStyle}></img>
                 <h2 className="flex-auto center m0">{this.props.title}</h2>
                 <div className="inline-block flex-none">{this.props.children}</div>                
             </div>
