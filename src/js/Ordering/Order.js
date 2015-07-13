@@ -48,8 +48,6 @@ class Order {
             totalPrice: this.getTotalPrice()
         };
 
-        console.log(JSON.stringify(pizzaOrderEvent, null, 4));
-
         return connect.push('orders', pizzaOrderEvent);
     }
 

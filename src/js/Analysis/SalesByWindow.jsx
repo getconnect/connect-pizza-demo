@@ -30,7 +30,6 @@ class SalesByWindow extends React.Component {
                     .chain(response.results)
                     .groupBy('time.threeHourWindow')
                     .map((salesByDelivery, threeHourWindow) => {
-                        console.log(salesByDelivery)
                         var deliverySales = _.filter(salesByDelivery, (saleByDelivery) => {
                                 var isDeliveryWithNoType = saleByDelivery.isDelivery && !saleByDelivery.deliveryType,
                                     isStandardDelivery = saleByDelivery.deliveryType === 'Delivery';
