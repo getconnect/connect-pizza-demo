@@ -36,7 +36,7 @@ SalesByTime.defaultProps = {
         chart: {
             type: 'area-spline', //The type of chart
             yAxis: {
-                valueFormatter: formatters.dollars //The formatter used for the values on teh y axis.
+                valueFormatter: formatters.dollars //The formatter used for the values on the y axis.
             }
         }
     }
