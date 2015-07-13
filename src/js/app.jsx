@@ -4,19 +4,6 @@ import { polyfill } from 'babelify';
 import OrderForm from './Ordering/OrderForm.jsx';
 import AnalyzeOrders from './Analysis/AnalyzeOrders.jsx';
 
-class TogglePageButton extends React.Component {
-    render() {
-        var { onTogglePage, isAnalyzing } = this.props;
-        return (
-            <div className="absolute top-0 right-0 m1">
-                <Button outline={true} onClick={onTogglePage}>
-                    { isAnalyzing ? 'Ordering': 'Analytics' }
-                </Button>
-            </div>
-        );
-    }
-}
-
 class App extends React.Component {
 
     constructor() {
@@ -29,15 +16,16 @@ class App extends React.Component {
         var { isAnalyzing } = this.state;
         return (
             <div>
-                <TogglePageButton onTogglePage={this.onTogglePage.bind(this)} 
-                                   isAnalyzing={isAnalyzing} />
-                {isAnalyzing ? <AnalyzeOrders/> : <OrderForm/>}
+                {isAnalyzing ? 
+                    <AnalyzeOrders onPageChange={() => this.onTogglePage(false)}/> : 
+                    <OrderForm onPageChange={() => this.onTogglePage(true)}/>
+                }
             </div>
         );
     }
 
-    onTogglePage() {
-        this.setState({ isAnalyzing: !this.state.isAnalyzing });
+    onTogglePage(isAnalyzing) {
+        this.setState({ isAnalyzing: isAnalyzing });
     }
 }
 

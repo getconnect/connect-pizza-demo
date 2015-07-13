@@ -36,7 +36,7 @@ class OrderForm extends React.Component {
 
         return (
             <Container>
-                <HeaderLogo />
+                <HeaderLogo onPageChange={ () => this.props.onPageChange() } />
                 <OptionPicker {...pizzaOptions.type} selected={selectedPizzaOptions.type} onItemSelected={this.onPizzaSelected} />
                 <OptionPicker {...pizzaOptions.size} selected={selectedPizzaOptions.size} onItemSelected={this.onSizeSelected} />
                 <OptionPicker {...pizzaOptions.base} selected={selectedPizzaOptions.base} onItemSelected={this.onBaseSelected} />
