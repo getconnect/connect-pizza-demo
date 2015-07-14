@@ -68,6 +68,10 @@ class AnalyzeOrders extends React.Component {
         );
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     onTimeframeChanged(newTimeframe) {
         this.setState({ timeframe: newTimeframe});
     }
