@@ -52,6 +52,10 @@ class OrderForm extends React.Component {
         );
     }
 
+    componentDidMount() {        
+        window.scrollTo(0, 0);
+    }
+
     initialState() {
         return  {
             order: new Order(),
