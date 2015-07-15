@@ -45,7 +45,7 @@ class PickupSales extends React.Component {
 }
 
 PickupSales.defaultProps = {
-    chartOptions: {
+    options: {
         title: 'Pickup Sales',
         fields: {
             totalPickupSales: {

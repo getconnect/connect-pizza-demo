@@ -13,9 +13,9 @@ class TableViz extends React.Component {
 
     componentDidMount() {
         let { query, options } = this.props;
-        let container = React.findDOMNode(this.refs.gaugeVizContainer);
+        let container = React.findDOMNode(this.refs.tableVizContainer);
 
-        this.viz = connect.table(query, container, tableOptions);
+        this.viz = connect.table(query, container, options);
         this.timer = new Timer(this.viz);
     }
 
