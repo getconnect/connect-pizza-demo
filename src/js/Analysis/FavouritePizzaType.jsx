@@ -12,12 +12,7 @@ class FavouritePizzaType extends React.Component {
     }
 
     getQuery() {
-        return connect.query('orders')
-            .select({
-                quantity: 'count'
-            })
-            .groupBy('pizza.type.value')
-            .timeframe('this_week');// TODO: implememnt favourite Pizza type
+        return null;// TODO: implememnt favourite Pizza type
     }
 
 }

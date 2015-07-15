@@ -10,7 +10,6 @@ class ChartViz extends React.Component {
             <div ref="chartVizContainer" style={{ height: '250px' }} />
         );
     }
-
     //Invoked once immediately after the initial rendering occurs
     componentDidMount() {
         let { query, options } = this.props;

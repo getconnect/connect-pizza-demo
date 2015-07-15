@@ -31,7 +31,7 @@ class AnalyzeOrders extends React.Component {
 
         return (
             <div>
-                <HeaderTitle title="Pizza Intelligence">
+                <HeaderTitle title="">
                     <TimeframeFilter timeframe={timeframe} onTimeframeChanged={(newTimeframe) => this.onTimeframeChanged(newTimeframe)}/>
                 </HeaderTitle>
                 <Container>
@@ -58,9 +58,6 @@ class AnalyzeOrders extends React.Component {
                     </PageSection>
                     <PageSection>
                         <OrdersBySuburb timeframe={timeframe} />
-                    </PageSection>
-                    <PageSection>
-                        <FavouritePizzaType timeframe={timeframe} />
                     </PageSection>
                     <ViewChanger iconName="ion-pizza" text="Order Pizza" onPageChanged={ () => this.props.onPageChanged() } />
                 </Container>

@@ -25,7 +25,7 @@ class SalesByDay extends React.Component {
 }
 
 SalesByDay.defaultProps = {
-    chartOptions: {
+    options: {
         title: 'Sales By Day of the Week',
         fields: {
             totalSales: {

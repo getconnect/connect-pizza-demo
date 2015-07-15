@@ -1,6 +1,5 @@
 import React from 'react';
 import connect from '../connect.js';
-import { Button, Badge } from 'rebass';
 import Timer from './RefreshTimer.js';
 
 class TextViz extends React.Component {

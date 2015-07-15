@@ -1,13 +1,11 @@
 import React from 'react';
 import connect from '../connect.js';
-import { Button, Badge } from 'rebass';
-import Timer from './RefreshTimer.js';
 
 class TableViz extends React.Component {
 
     render() {
         return (
-            <div ref="tableVizContainer" style={ { height: '500px' } } />
+            <div ref="tableVizContainer" className="connect-table-fixed-header" style={ { height: '500px' } } />
         );
     }
 
@@ -16,11 +14,9 @@ class TableViz extends React.Component {
         let container = React.findDOMNode(this.refs.tableVizContainer);
 
         this.viz = connect.table(query, container, options);
-        this.timer = new Timer(this.viz);
     }
 
     componentWillUnmount() {
-        this.timer.destroy();
         this.viz.destroy();
     }
     

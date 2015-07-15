@@ -46,7 +46,7 @@ class OrdersBySuburb extends React.Component {
 }
 
 OrdersBySuburb.defaultProps = {
-    tableOptions: {
+    options: {
         fields: {
             'address.components.locality': {
                 label: 'Suburb',

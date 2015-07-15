@@ -62,7 +62,7 @@ class SalesByWindow extends React.Component {
 }
 
 SalesByWindow.defaultProps = {
-    chartOptions: {
+    options: {
         title: 'Sales By Time Period',
         fields: {
             totalDeliverySales: {
