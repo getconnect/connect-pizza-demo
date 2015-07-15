@@ -10,7 +10,7 @@ class OrdersBySuburb extends React.Component {
 
     render() {
         return (
-            <TableViz {...this.props} query={() => this.getQuery()} />
+            <TableViz options={this.props.options} query={() => this.getQuery()} />
         );
     }
 
@@ -33,6 +33,7 @@ class OrdersBySuburb extends React.Component {
                     }
                 })
                 .timeframe(this.props.timeframe)
+                .timezone('Australia/Brisbane')
                 .groupBy([suburbProperty])
                 .execute()
                 .then((response) => {

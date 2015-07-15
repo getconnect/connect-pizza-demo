@@ -5,21 +5,16 @@ import Timer from './RefreshTimer.js';
 class GaugeViz extends React.Component {
 
     render() {
-        var style = {
-            height: '200px'
-        };
-
         return (
-            <div ref="gaugeVizContainer" style={style} />
+            <div ref="gaugeVizContainer" style={{ height: '200px' }} />
         );
     }
 
     componentDidMount() {
-        var query = this.props.query,
-            container = React.findDOMNode(this.refs.gaugeVizContainer),
-            chartOptions = this.props.chartOptions;
+        let { query, options } = this.props;
+        let container = React.findDOMNode(this.refs.gaugeVizContainer);
 
-        this.viz = connect.gauge(query, container, chartOptions);
+        this.viz = connect.gauge(query, container, options);
         this.timer = new Timer(this.viz);
     }
 

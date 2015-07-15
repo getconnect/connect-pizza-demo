@@ -6,19 +6,14 @@ import Timer from './RefreshTimer.js';
 class TableViz extends React.Component {
 
     render() {
-        var style = {
-            height: '500px'
-        };
-
         return (
-            <div ref="tableVizContainer" style={style} />
+            <div ref="tableVizContainer" style={ { height: '500px' } } />
         );
     }
 
     componentDidMount() {
-        var query = this.props.query,
-            container = React.findDOMNode(this.refs.tableVizContainer),
-            tableOptions = this.props.tableOptions;
+        let { query, options } = this.props;
+        let container = React.findDOMNode(this.refs.gaugeVizContainer);
 
         this.viz = connect.table(query, container, tableOptions);
         this.timer = new Timer(this.viz);

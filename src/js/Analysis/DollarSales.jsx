@@ -7,7 +7,7 @@ class DollarSales extends React.Component {
 
     render() {
         return (
-            <TextViz {...this.props} query={this.getQuery()} />
+            <TextViz options={this.props.options} query={this.getQuery()} />
         );
     }
 
@@ -18,12 +18,13 @@ class DollarSales extends React.Component {
                         sum: 'totalPrice'
                     }
                 })
-                .timeframe(this.props.timeframe);
+                .timeframe(this.props.timeframe)
+                .timezone('Australia/Brisbane');
     }
 }
 
 DollarSales.defaultProps = {
-    textOptions: {
+    options: {
         title: 'Sales ($)',
         fields: {
             totalSales: {

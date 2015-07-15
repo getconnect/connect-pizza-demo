@@ -12,11 +12,10 @@ class TextViz extends React.Component {
     }
 
     componentDidMount() {
-        var query = this.props.query,
-            container = React.findDOMNode(this.refs.textVizContainer),
-            textOptions = this.props.textOptions;
+        let { query, options } = this.props;
+        let container = React.findDOMNode(this.refs.textVizContainer);
 
-        this.viz = connect.text(query, container, textOptions);
+        this.viz = connect.text(query, container, options);
         this.timer = new Timer(this.viz);
     }
 

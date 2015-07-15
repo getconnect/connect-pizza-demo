@@ -8,7 +8,7 @@ class DeliverySales extends React.Component {
 
     render() {
         return (
-            <GaugeViz {...this.props} query={() => this.getQuery()} />
+            <GaugeViz options={this.props.options} query={() => this.getQuery()} />
         );
     }
 
@@ -20,6 +20,7 @@ class DeliverySales extends React.Component {
                 }
             })
             .timeframe(this.props.timeframe)
+            .timezone('Australia/Brisbane')
             .groupBy(['isDelivery'])
             .execute()
             .then((response) => {
@@ -44,7 +45,7 @@ class DeliverySales extends React.Component {
 }
 
 DeliverySales.defaultProps = {
-    chartOptions: {
+    options: {
         title: 'Delivery Sales',
         fields: {
             totalDeliverySales: {

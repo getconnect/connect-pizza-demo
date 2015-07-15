@@ -7,21 +7,22 @@ class FavouritePizzaType extends React.Component {
 
     render() {
         return (
-            <ChartViz {...this.props} query={this.getQuery()} />
+            <ChartViz options={this.props.options} query={this.getQuery()} />
         );
     }
 
     getQuery() {
-        return null; // TODO: Build a query
+        return connect.query('orders')
+            .select({
+                quantity: 'count'
+            })
+            .groupBy('pizza.type.value')
+            .timeframe('this_week');// TODO: implememnt favourite Pizza type
     }
 
 }
 FavouritePizzaType.defaultProps = {
-    chartOptions: {
-        chart: {
-            type: 'bar'
-        }
-    }
+    options: { }
 }
 
-exports default FavouritePizzaType;
+export default FavouritePizzaType;

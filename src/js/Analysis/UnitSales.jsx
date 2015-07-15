@@ -7,7 +7,7 @@ class UnitSales extends React.Component {
 
     render() {
         return (
-            <TextViz {...this.props} query={this.getQuery()} />
+            <TextViz options={this.props.options} query={this.getQuery()} />
         );
     }
 
@@ -18,12 +18,13 @@ class UnitSales extends React.Component {
                         sum: 'quantity'
                     }
                 })
-                .timeframe(this.props.timeframe);
+                .timeframe(this.props.timeframe)
+                .timezone('Australia/Brisbane');
     }
 }
 
 UnitSales.defaultProps = {
-    textOptions: {
+    options: {
         title: 'Sales (Units)',
         fields: {
             totalNumPizzas: {

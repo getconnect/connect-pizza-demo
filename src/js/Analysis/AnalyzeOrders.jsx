@@ -7,8 +7,8 @@ import PickupSales from './PickupSales.jsx';
 import DeliverySales from './DeliverySales.jsx';
 import SalesByWindow from './SalesByWindow.jsx';
 import SalesByDay from './SalesByDay.jsx';
-import UnitsByType from './UnitsByType.jsx';
 import OrdersBySuburb from './OrdersBySuburb.jsx';
+import FavouritePizzaType from './FavouritePizzaType.jsx';
 import VizRow from './VizRow.jsx';
 import PageSection from '../Common/PageSection.jsx';
 import TimeframeFilter from './TimeframeFilter.jsx';
@@ -57,10 +57,10 @@ class AnalyzeOrders extends React.Component {
                         <SalesByDay timeframe={timeframe} />
                     </PageSection>
                     <PageSection>
-                        <UnitsByType timeframe={timeframe} />
+                        <OrdersBySuburb timeframe={timeframe} />
                     </PageSection>
                     <PageSection>
-                        <OrdersBySuburb timeframe={timeframe} />
+                        <FavouritePizzaType timeframe={timeframe} />
                     </PageSection>
                     <ViewChanger iconName="ion-pizza" text="Order Pizza" onPageChanged={ () => this.props.onPageChanged() } />
                 </Container>

@@ -5,20 +5,19 @@ import Timer from './RefreshTimer.js';
 class ChartViz extends React.Component {
 
     render() {
-
         //Return a div that will be the container for the chart.
         return (
-            <div ref="chartVizContainer" style={ { height: '250px' } } />
+            <div ref="chartVizContainer" style={{ height: '250px' }} />
         );
     }
 
     //Invoked once immediately after the initial rendering occurs
     componentDidMount() {
-        var query = this.props.query,
-            container = React.findDOMNode(this.refs.chartVizContainer),
-            chartOptions = this.props.chartOptions;
+        let { query, options } = this.props;
+        let container = React.findDOMNode(this.refs.chartVizContainer);
 
-        this.viz = connect.chart(query, container, chartOptions);
+        this.viz = connect.chart(query, container, options);
+
         this.timer = new Timer(this.viz);
     }
 
