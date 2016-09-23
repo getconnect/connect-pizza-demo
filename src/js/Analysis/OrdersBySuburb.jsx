@@ -27,11 +27,12 @@ class OrdersBySuburb extends React.Component {
                     },
                     unitsTotal: {
                         sum: 'quantity'
-                    },                  
+                    },
                     dollarsTotal: {
                         sum: 'totalPrice'
                     }
                 })
+                .filter({ [suburbProperty]: { neq: null } })
                 .timeframe(this.props.timeframe)
                 .timezone('Australia/Brisbane')
                 .groupBy([suburbProperty])
@@ -50,23 +51,23 @@ OrdersBySuburb.defaultProps = {
         fields: {
             'address.components.locality': {
                 label: 'Suburb',
-                valueFormatter: suburbNameMapper
+                format: suburbNameMapper
             },
             'avgOrderTotal': {
                 label: 'Avg Order ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             },
             'maxOrderTotal': {
                 label: 'Largest Order',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             },
             'unitsTotal': {
                 label: 'Sales (Units)',
-                valueFormatter: formatters.units
+                format: formatters.units
             },
             'dollarsTotal': {
                 label: 'Sales ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         }
     }

@@ -14,7 +14,11 @@ class GaugeViz extends React.Component {
         let { query, options } = this.props;
         let container = React.findDOMNode(this.refs.gaugeVizContainer);
 
-        this.viz = connect.gauge(query, container, options);
+        this.viz = connect.visualize(query)
+            .as('gauge')
+            .inside(container)
+            .with(options)
+            .draw();
         this.timer = new Timer(this.viz);
     }
 

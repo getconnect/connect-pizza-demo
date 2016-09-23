@@ -13,13 +13,17 @@ class TableViz extends React.Component {
         let { query, options } = this.props;
         let container = React.findDOMNode(this.refs.tableVizContainer);
 
-        this.viz = connect.table(query, container, options);
+        this.viz = connect.visualize(query)
+            .as('table')
+            .inside(container)
+            .with(options)
+            .draw();
     }
 
     componentWillUnmount() {
         this.viz.destroy();
     }
-    
+
     componentDidUpdate() {
         this.viz.update(this.props.query);
     }

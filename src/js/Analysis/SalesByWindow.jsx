@@ -67,21 +67,21 @@ SalesByWindow.defaultProps = {
         fields: {
             totalDeliverySales: {
                 label: 'Delivery Sales ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             },
             totalDroneSales: {
                 label: 'Drone Sales ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             },
             totalPickupSales: {
                 label: 'Pick-up Sales ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         },
         chart: {
             type: 'bar',
             yAxis: {
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             },
         }
     }

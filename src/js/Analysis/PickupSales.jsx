@@ -50,7 +50,7 @@ PickupSales.defaultProps = {
         fields: {
             totalPickupSales: {
                 label: 'Pickup Sales',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         },
         gauge: {

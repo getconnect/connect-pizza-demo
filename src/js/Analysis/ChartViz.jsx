@@ -15,7 +15,11 @@ class ChartViz extends React.Component {
         let { query, options } = this.props;
         let container = React.findDOMNode(this.refs.chartVizContainer);
 
-        this.viz = connect.chart(query, container, options);
+        this.viz = connect.visualize(query)
+            .as('chart')
+            .inside(container)
+            .with(options)
+            .draw();
 
         this.timer = new Timer(this.viz);
     }

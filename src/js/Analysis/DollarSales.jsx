@@ -28,7 +28,7 @@ DollarSales.defaultProps = {
         title: 'Sales ($)',
         fields: {
             totalSales: {
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         }
     }

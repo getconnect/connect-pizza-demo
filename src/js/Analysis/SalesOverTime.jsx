@@ -30,13 +30,13 @@ SalesByTime.defaultProps = {
         fields: {
             totalSales: {
                 label: 'Total Sales ($)', //The label used in the legend / tooltip
-                valueFormatter: formatters.dollars //The formatter used for 'totalSales' values
+                format: formatters.dollars //The formatter used for 'totalSales' values
             }
         },
         chart: {
             type: 'area-spline', //The type of chart
             yAxis: {
-                valueFormatter: formatters.dollars //The formatter used for the values on the y axis.
+                format: formatters.dollars //The formatter used for the values on the y axis.
             }
         }
     }

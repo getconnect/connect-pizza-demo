@@ -3,7 +3,7 @@ import connect from '../connect.js';
 import Timer from './RefreshTimer.js';
 
 class TextViz extends React.Component {
-    
+
     render() {
         return (
             <div ref="textVizContainer" />
@@ -14,7 +14,11 @@ class TextViz extends React.Component {
         let { query, options } = this.props;
         let container = React.findDOMNode(this.refs.textVizContainer);
 
-        this.viz = connect.text(query, container, options);
+        this.viz = connect.visualize(query)
+            .as('text')
+            .inside(container)
+            .with(options)
+            .draw();
         this.timer = new Timer(this.viz);
     }
 

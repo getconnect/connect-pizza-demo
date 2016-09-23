@@ -14,7 +14,7 @@ class DeliverySales extends React.Component {
 
     getQuery() {
         return connect.query('orders')
-            .select({            
+            .select({
                 totalSales: {
                     sum: 'totalPrice'
                 }
@@ -50,7 +50,7 @@ DeliverySales.defaultProps = {
         fields: {
             totalDeliverySales: {
                 label: 'Delivery Sales',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         },
         gauge: {

@@ -28,7 +28,7 @@ UnitSales.defaultProps = {
         title: 'Sales (Units)',
         fields: {
             totalNumPizzas: {
-                valueFormatter: formatters.units
+                format: formatters.units
             }
         }
     }

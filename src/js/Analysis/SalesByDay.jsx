@@ -30,14 +30,14 @@ SalesByDay.defaultProps = {
         fields: {
             totalSales: {
                 label: 'Total Sales ($)',
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         },
         chart: {
             type: 'bar',
             colors: ['#9b59b6'],
             yAxis: {
-                valueFormatter: formatters.dollars
+                format: formatters.dollars
             }
         }
     }
